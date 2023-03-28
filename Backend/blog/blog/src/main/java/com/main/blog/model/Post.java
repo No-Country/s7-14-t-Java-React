@@ -36,7 +36,7 @@ public class Post {
     )
     private List<Hashtag> hashtag;
 
-    @ManyToOne
+    @OneToMany
     @JoinColumn(name = "category_id")
     private Category category;
 
