@@ -1,8 +1,10 @@
 package com.main.blog.model;
 
-import com.fasterxml.jackson.annotation.JsonAnyGetter;
 import jakarta.persistence.*;
 import lombok.*;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Getter
 @Setter
@@ -38,4 +40,14 @@ public class User {
     @ManyToOne
     @JoinColumn(name = "role_id")
     private Role role;
+
+
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    private List<Follower> followers = new ArrayList<Follower>();
+
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    private List<Complaint> denuncias = new ArrayList<Complaint>(); //user_denuncia
+
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    private List<Banned> banneds = new ArrayList<Banned>();
 }
