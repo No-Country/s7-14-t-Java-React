@@ -1,10 +1,9 @@
 package com.main.blog.dto;
 
-import jakarta.persistence.Column;
 import lombok.Data;
 
 @Data
-public class ResponseUserDto {
+public class RequestUserDto {
 
     private String name;
 
@@ -16,7 +15,5 @@ public class ResponseUserDto {
 
     private String phone;
 
-    private String avatar;
-
-    private String token;
+    private String password;
 }
