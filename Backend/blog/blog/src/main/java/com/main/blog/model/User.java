@@ -2,6 +2,10 @@ package com.main.blog.model;
 
 import jakarta.persistence.*;
 import lombok.*;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
+
+import java.util.Date;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -36,6 +40,20 @@ public class User {
 
     @Column(name = "phone")
     private String phone;
+
+    @Column(name = "avatar")
+    private String avatar;
+
+    @CreationTimestamp
+    @Column(name = "creationDate")
+    private Date creationDate;
+
+    @UpdateTimestamp
+    @Column(name = "updateDate")
+    private Date updateDate;
+
+    @Column(name = "softDelete")
+    private boolean softDelete;
 
     @ManyToOne
     @JoinColumn(name = "role_id")
