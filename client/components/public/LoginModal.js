@@ -6,7 +6,7 @@ import * as yup from 'yup'
 import { yupResolver } from '@hookform/resolvers/yup'
 
 import ImageLogin from '@/public/images/BackGround_login.png'
-import Logo from '@/public/images/logo.png'
+import Logo from '@/public/images/Logo.png'
 
 import { Input } from '../common/Input'
 import { Button } from '../common/Button'

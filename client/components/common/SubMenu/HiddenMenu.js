@@ -4,16 +4,16 @@ import { useRouter } from 'next/router'
 import styled from 'styled-components'
 
 const links = [
-  { name: 'ARMA TU PC', to: '#', id: 1 },
-  { name: 'ARMA TU COMBO', to: '#', id: 2 },
+  { name: 'EXPLORAR', to: '#', id: 1 },
+  { name: 'PUBLICAR', to: '#', id: 2 },
 ]
 const categories = [
-  { name: 'Notebooks', to: '/notebooks', id: 3 },
-  { name: 'Computadoras', to: '/computers', id: 4 },
-  { name: 'Componentes de PC', to: '/components', id: 5 },
-  { name: 'Perifericos', to: '/peripherals', id: 6 },
+  { name: 'Perfil', to: '/notebooks', id: 3 },
+  { name: 'Ayuda', to: '/computers', id: 4 },
+  { name: 'Cerrar Sesión', to: '/components', id: 5 },
+  /*{ name: 'Perifericos', to: '/peripherals', id: 6 },
   { name: 'Celulares', to: '/phones', id: 7 },
-  { name: 'Conectividad', to: '/connectivity', id: 8 },
+  { name: 'Conectividad', to: '/connectivity', id: 8 },*/
 ]
 
 const itemVariants = {
@@ -47,7 +47,7 @@ export const HiddenMenu = ({ open, action }) => {
         <Menu
           initial={{ width: 0 }}
           animate={{
-            width: 300,
+            width: 200,
             borderRadius: '0 0 50px 0',
             transition: { duration: 0.2 },
           }}
@@ -99,7 +99,7 @@ export const HiddenMenu = ({ open, action }) => {
 const Menu = styled(motion.aside)`
   position: fixed;
   backdrop-filter: blur(2px);
-  height: 500px;
+  height: 280px;
   filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.3));
   background-color: #000000cf;
   color: var(--primaryGreen1);

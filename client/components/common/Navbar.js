@@ -1,6 +1,6 @@
 import Image from 'next/image'
 import styled from 'styled-components'
-import Logo from '@/public/images/main-logo.png'
+import Logo from '@/public/images/Logo.png'
 import { SearchNav } from './SearchNav'
 import { MenuNav } from './MenuNav'
 import { motion } from 'framer-motion'
@@ -18,7 +18,7 @@ export const Navbar = () => {
             transition={{ duration: 0.5, delay: 0.2 }}
           >
             <Link passHref href="/">
-              <Image src={Logo} width={160} height={40} alt="logo" />
+              <Image src={Logo} width={50} height={40} alt="logo" />
             </Link>
           </motion.div>
           <SearchNav />

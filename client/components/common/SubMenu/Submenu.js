@@ -22,7 +22,7 @@ export const Submenu = () => {
         onClick={cycleOpen}
       >
         <MenuButton isOpen={open} />
-        <p>MENU DE CATEGORÍAS</p>
+        <p>MENU</p>
       </motion.div>
       <ButtonViolet />
 
