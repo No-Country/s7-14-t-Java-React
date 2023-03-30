@@ -15,4 +15,8 @@ public class ResponseUserDto {
     private String state;
 
     private String phone;
+
+    private String avatar;
+
+    private String token;
 }
