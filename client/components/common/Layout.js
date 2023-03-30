@@ -1,9 +1,13 @@
 import { AnimatePresence } from 'framer-motion'
 import styled from 'styled-components'
+import { Navbar } from './Navbar';
+import Modal from './Modal'
 import { GlobalContext } from '@/context/GlobalContext'
 import { useContext } from 'react'
-import Modal from './Modal'
+import { LoginModal } from '../public/LoginModal';
+
 const Layout = ({ children }) => {
+
   const { contextDataGlobal, setContextDataGlobal } = useContext(GlobalContext)
 
   const setShowModal = (showModal) => {
@@ -16,10 +20,11 @@ const Layout = ({ children }) => {
         showModal={contextDataGlobal.showModal}
         padding="0"
       >
+      <LoginModal />
       </Modal>
-  
-      <AnimatePresence mode="wait">{children}</AnimatePresence>
+      <Navbar />
 
+      <AnimatePresence mode="wait">{children}</AnimatePresence>
     </PageContainer>
   )
 }

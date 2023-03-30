@@ -1,10 +1,8 @@
 import AccountIcon from '@/public/icons/Account'
-import CartIcon from '@/public/icons/Cart'
 import styled from 'styled-components'
 import { motion } from 'framer-motion'
-import Link from 'next/link'
 import { GlobalContext } from '@/context/GlobalContext'
-import { useContext } from 'react'
+  import { useContext } from 'react'
 
 export const MenuNav = () => {
   const { contextDataGlobal, setContextDataGlobal } = useContext(GlobalContext)
@@ -27,14 +25,7 @@ export const MenuNav = () => {
         <AccountIcon />
         <p>Mi cuenta</p>
       </Item>
-      <Item>
-        <span className="bar" />
-        <CartIcon />
-        <p>Mi carrito</p>
-      </Item>
-      <motion.div whileHover={{ scale: 1.1 }} className="number-cart">
-        <p>10</p>
-      </motion.div>
+      
     </Container>
   )
 }

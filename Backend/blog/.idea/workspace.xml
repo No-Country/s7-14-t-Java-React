@@ -2,15 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="475c0977-c754-49ee-bf0e-fa5370058f6b" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.mvn/wrapper/maven-wrapper.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.mvn/wrapper/maven-wrapper.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mvnw" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mvnw.cmd" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/main/blog/BlogApplication.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/main/blog/BlogApplicationTests.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog/src/main/java/com/main/blog/config/ApplicationConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/blog/src/main/java/com/main/blog/config/ApplicationConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog/src/main/java/com/main/blog/config/CustomUserDetailsService.java" beforeDir="false" afterPath="$PROJECT_DIR$/blog/src/main/java/com/main/blog/service/CustomUserDetailsService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog/src/main/java/com/main/blog/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/blog/src/main/java/com/main/blog/controller/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog/src/main/java/com/main/blog/dto/LoginUserDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/blog/src/main/java/com/main/blog/dto/LoginUserDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog/src/main/java/com/main/blog/dto/ResponseUserDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/blog/src/main/java/com/main/blog/dto/ResponseUserDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog/src/main/java/com/main/blog/model/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/blog/src/main/java/com/main/blog/model/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog/src/main/java/com/main/blog/repository/IUserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/blog/src/main/java/com/main/blog/repository/IUserRepository.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -20,19 +18,22 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
   </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
   <component name="ProjectId" id="2NbBpEmjg70TCSyu1pdFi6rdhoW" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "last_opened_file_path": "C:/Users/Victorio/Desktop/proyectos/Proyecto JavaReact No-Country To the moon/Backend"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Victorio/Desktop/proyectos/Proyecto JavaReact No-Country To the moon/Backend&quot;
   }
-}]]></component>
+}</component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
