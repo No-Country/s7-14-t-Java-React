@@ -25,7 +25,7 @@ public class Post {
     @Column(name = "fecha", nullable = false)
     private Date fecha;
 
-    @ManyToOne
+    @OneToMany
     @JoinColumn(name = "image_id")
     private List<Image> image;
 
@@ -36,7 +36,7 @@ public class Post {
     )
     private List<Hashtag> hashtag;
 
-    @OneToMany
+    @ManyToOne
     @JoinColumn(name = "category_id")
     private Category category;
 
