@@ -1,10 +1,10 @@
-import { AnimatePresence } from 'framer-motion'
-import styled from 'styled-components'
-import { Navbar } from './Navbar'
-import Modal from './Modal'
-import { GlobalContext } from '@/context/GlobalContext'
-import { useContext } from 'react'
-import { LoginModal } from '../public/LoginModal'
+import { AnimatePresence } from 'framer-motion';
+import styled from 'styled-components';
+import { Navbar } from './Navbar';
+import Modal from './Modal';
+import { GlobalContext } from '@/context/GlobalContext';
+import { useContext } from 'react';
+import { LoginModal } from '../public/LoginModal';
 
 const Layout = ({ children }) => {
   const { contextDataGlobal, setContextDataGlobal } = useContext(GlobalContext)
