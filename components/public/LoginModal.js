@@ -1,4 +1,4 @@
-import { useContext, useState } from 'react'
+import { useContext, useState } from 'react';
 import Image from 'next/image'
 import styled from 'styled-components'
 import { useForm } from 'react-hook-form'
