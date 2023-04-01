@@ -22,6 +22,6 @@ public class Category {
     @Column(name = "description")
     private String description;
 
-    @ManyToMany(mappedBy = "post")
+    @OneToMany(mappedBy = "category")
     private List<Post> posts;
 }
