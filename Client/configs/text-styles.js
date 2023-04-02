@@ -3,7 +3,7 @@ import typography from '../constants/typography'
 export default `
   html {
     font-family: ${typography.fontFamily};
-    font-size: 10px;
+    font-size: 14px;
     font-stretch: normal;
     font-style: normal;
     font-variant: normal;
