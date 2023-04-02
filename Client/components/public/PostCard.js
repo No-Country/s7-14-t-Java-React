@@ -4,6 +4,7 @@ import styled from 'styled-components'
 import Image from 'next/image'
 
 const Card = styled.article`
+    margin-top: 200px;
     width: 90%;
     height: 400px;
     border-radius: 8px;

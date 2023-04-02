@@ -1,6 +1,5 @@
 import Head from 'next/head'
 import { motion } from 'framer-motion'
-import { Prov }from '@/components/public/home/Startform' 
 import PostsContainer from '@/components/public/PostsContainer'
 
 export default function Home() {
@@ -19,7 +18,6 @@ export default function Home() {
         key="home"
         style={{ width: '100%' }}
       >
-      <Prov />
       <PostsContainer />
       </motion.div>
     </>

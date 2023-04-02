@@ -50,8 +50,8 @@ const Container = styled(motion.div)`
     height: 100%;
 
     p {
-      font-weight: 700;
-      font-size: 16px;
+      font-weight: 600;
+      font-size: 20px;
       color: #454545;
     }
   }
