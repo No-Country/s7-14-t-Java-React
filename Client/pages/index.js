@@ -1,6 +1,6 @@
-import Head from 'next/head'
-import { motion } from 'framer-motion'
-import PostsContainer from '@/components/public/PostsContainer'
+import Head from 'next/head';
+import { motion } from 'framer-motion';
+import PostsContainer from '@/components/public/PostsContainer';
 
 export default function Home() {
   return (
