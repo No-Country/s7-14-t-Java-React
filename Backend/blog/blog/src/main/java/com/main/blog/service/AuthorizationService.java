@@ -29,11 +29,13 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
+import org.springframework.stereotype.Service;
 
 import java.sql.SQLIntegrityConstraintViolationException;
 import java.util.Date;
 import java.util.Objects;
 
+@Service
 public class AuthorizationService implements IAuthorizationService {
     @Autowired
     private Mapper mapper;

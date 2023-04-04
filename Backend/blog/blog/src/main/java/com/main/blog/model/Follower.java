@@ -8,6 +8,8 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.List;
+
 @Getter
 @Entity
 @Builder
@@ -25,4 +27,11 @@ public class Follower {
     @JsonIgnore
     @JoinColumn(name = "followerUser_id")
     private User user;
+
+
+   /* @ManyToOne(fetch = FetchType.EAGER)
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+    @JsonIgnore
+    @JoinColumn(name = "followedUser_id")
+    private List<User> user;*/
 }

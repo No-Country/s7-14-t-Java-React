@@ -63,8 +63,9 @@ public class User {
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private List<Follower> followers = new ArrayList<Follower>();
 
+
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
-    private List<Complaint> denuncias = new ArrayList<Complaint>(); //user_denuncia
+    private List<Complaint> complaints = new ArrayList<Complaint>();
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private List<Banned> banneds = new ArrayList<Banned>();
