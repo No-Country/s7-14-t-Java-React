@@ -1,8 +1,8 @@
 //Dependencies
-import { QueryClientProvider, QueryClient } from 'react-query'
+import { QueryClientProvider, QueryClient } from 'react-query';
 //Styles
-import GlobalStyles from '@/configs/theme.js'
-import '@/styles/globals.css'
+import GlobalStyles from '@/configs/theme.js';
+import '@/styles/globals.css';
 //Context
 import GlobalContextProvider from '@/context/GlobalContext'
 //Components
