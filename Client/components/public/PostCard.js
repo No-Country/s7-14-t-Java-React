@@ -1,9 +1,9 @@
 import React from 'react'
-import { Controller } from 'react-hook-form'
 import styled from 'styled-components'
 import Image from 'next/image'
+import Link from 'next/link'
 
-const Card = styled.article`
+const Card = styled(Link)`
     margin-top: 200px;
     width: 90%;
     height: 400px;
@@ -100,9 +100,10 @@ const LikeCommentCount = styled.span`
 
 const PostCard = ({posts}) => {
   return (
-    <Card>
+    
+    <Card href="/post/123">
         <Header>
-            <ProfileImage src="/../public/images/profile-image.png" width={40} height={40}/>
+            <ProfileImage src="/../public/images/profile-image.png" width={40} height={40} alt='profile-pic'/>
             <ProfileTitleContainer>
                 <ProfileTitle>
                     {posts.name}
@@ -111,7 +112,7 @@ const PostCard = ({posts}) => {
                     {posts.date}
                 </PostDate>
             </ProfileTitleContainer>
-            <LikeIcon src="/../public/icons/favorite-icon.png" width={18} height={16}/>
+            <LikeIcon src="/../public/icons/favorite-icon.png" width={18} height={16} alt='favorite-icon'/>
         </Header>
         <Content>
             <Title>
@@ -128,18 +129,19 @@ const PostCard = ({posts}) => {
         </Content>        
         <Footer>
             <LikeCommentContainer>
-                <Image src="/../public/icons/like-icon.png" width={16.76} height={15.57}/>
+                <Image src="/../public/icons/like-icon.png" width={16.76} height={15.57} alt='like-icon'/>
                 <LikeCommentCount>
                     {posts.likes}
                 </LikeCommentCount>
             </LikeCommentContainer>
             <LikeCommentContainer>
-                <Image src="/../public/icons/comment-icon.png" width={18} height={18}/>
+                <Image src="/../public/icons/comment-icon.png" width={18} height={18} alt='comment-icon'/>
                 <LikeCommentCount>
                     {posts.comments}
                 </LikeCommentCount>
             </LikeCommentContainer>
         </Footer>
+
     </Card>
   )
 }

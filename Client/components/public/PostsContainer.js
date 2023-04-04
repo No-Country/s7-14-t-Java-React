@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import PostCard from './PostCard'
+import Link from 'next/link'
 
 const Container = styled.section`
   width: 100%;
