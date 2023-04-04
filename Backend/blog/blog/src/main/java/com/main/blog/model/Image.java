@@ -1,8 +1,10 @@
 package com.main.blog.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
+
 
 
 @Getter
@@ -22,7 +24,6 @@ public class Image {
 
     @Column(name = "dataImage", nullable = false)
     private String dataImage;
-
 
 
 }
