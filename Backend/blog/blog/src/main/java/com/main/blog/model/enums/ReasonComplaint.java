@@ -6,7 +6,7 @@ import lombok.Getter;
 
 @Getter
 @AllArgsConstructor
-public enum reasoncomplaint {
+public enum ReasonComplaint {
 
     REASON1_COMPLAINT("se hace pasar por otra persona"),
 
