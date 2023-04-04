@@ -97,45 +97,45 @@ const LikeCommentCount = styled.span`
     color: #5673BF;
 `
 
-const PostCard = () => {
+const PostCard = ({posts}) => {
   return (
     <Card>
         <Header>
             <ProfileImage src="/../public/images/profile-image.png" width={40} height={40}/>
             <ProfileTitleContainer>
                 <ProfileTitle>
-                    Agus Martínez
+                    {posts.name}
                 </ProfileTitle>
                 <PostDate>
-                    Hace 2 días
+                    {posts.date}
                 </PostDate>
             </ProfileTitleContainer>
             <LikeIcon src="/../public/icons/favorite-icon.png" width={18} height={16}/>
         </Header>
         <Content>
             <Title>
-                Mi guiso de lentejas
+                {posts.title}
             </Title>
             <TagsContainer>
                 <Tags>
-                    Cocina
+                    {posts.tag}
                 </Tags>
             </TagsContainer>
             <Paragraph>
-                El guiso de lentejas es para mí el guiso por excelencia, el que mejor me sale, el que hago casi a ciegas. Una comida ideal para comer en los días fríos, porque enseguida sube la temperatura corporal, además como es bien rendidor y bastante económico es muy práctico para cocinar cuando tenemos muchos invitados. Les recomiendo hacer mucho y frisarlo en porciones...
+                {posts.description}
             </Paragraph>
         </Content>        
         <Footer>
             <LikeCommentContainer>
                 <Image src="/../public/icons/like-icon.png" width={16.76} height={15.57}/>
                 <LikeCommentCount>
-                    1.2 mil
+                    {posts.likes}
                 </LikeCommentCount>
             </LikeCommentContainer>
             <LikeCommentContainer>
                 <Image src="/../public/icons/comment-icon.png" width={18} height={18}/>
                 <LikeCommentCount>
-                    534
+                    {posts.comments}
                 </LikeCommentCount>
             </LikeCommentContainer>
         </Footer>
