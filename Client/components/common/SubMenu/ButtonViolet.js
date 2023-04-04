@@ -1,6 +1,6 @@
-import Link from 'next/link'
-import styled from 'styled-components'
-import { motion } from 'framer-motion'
+import Link from 'next/link';
+import styled from 'styled-components';
+import { motion } from 'framer-motion';
 
 export const ButtonViolet = () => {
   return (
@@ -47,8 +47,8 @@ const Container = styled(motion.div)`
     height: 0px;
     margin-right: auto;
     margin-left: auto;
-    top: 50px;
-    left: -8px;
+    top: 70px;
+    left: -5px;
     right: 0;
     position: absolute;
     z-index: 0;
