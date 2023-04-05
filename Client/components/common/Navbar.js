@@ -10,7 +10,7 @@ import Link from 'next/link'
 export const Navbar = () => {
   return (
     <Nav>
-      <div className="container-nav">
+      <div className="container-nav" id="container-nav">
         <div className="left-side">
           <motion.div
             initial={{ opacity: 0 }}
@@ -46,6 +46,11 @@ const Nav = styled.nav`
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
+  }
+  @media screen and (max-width: 600px){ 
+    #container-nav{
+      display: none;
+    }
   }
   .left-side {
     display: flex;
