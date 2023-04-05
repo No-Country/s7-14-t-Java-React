@@ -47,7 +47,7 @@ const Nav = styled.nav`
     align-items: center;
     justify-content: space-between;
   }
-  @media screen and (max-width: 600px){ 
+  @media (max-width: 600px){ 
     #container-nav{
       display: none;
     }
