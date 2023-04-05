@@ -18,7 +18,7 @@ export const Navbar = () => {
             transition={{ duration: 0.5, delay: 0.2 }}
           >
             <Link passHref href="/">
-              <Image src={Logo} width={60} height={40} alt="logo" />
+              <Image src={Logo} width={44} height={44} alt="logo" />
             </Link>
           </motion.div>
           <SearchNav />
