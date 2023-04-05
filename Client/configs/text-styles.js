@@ -2,7 +2,7 @@ import typography from '../constants/typography'
 
 export default `
   html {
-    font-family: ${typography.fontFamily};
+    font-family: '${typography.fontFamily}';
     font-size: 14px;
     font-stretch: normal;
     font-style: normal;
