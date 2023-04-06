@@ -1,10 +1,9 @@
 package com.main.blog.model;
 
 import jakarta.persistence.*;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -12,8 +11,11 @@ import java.util.List;
 @Setter
 @Builder
 @Entity
+@AllArgsConstructor
+@NoArgsConstructor
 @Table(name = "posts")
 public class Post {
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id", nullable = false)
@@ -22,24 +24,23 @@ public class Post {
     @Column(name = "text")
     private String text;
 
-    @Column(name = "fecha", nullable = false)
-    private Date fecha;
+    @Column(name = "date", nullable = false)
+    private Date date;
 
-    @OneToMany
-    @JoinColumn(name = "image_id")
-    private List<Image> image;
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    @JoinColumn(name = "post_id", referencedColumnName = "id")
+    private List<Image> images = new ArrayList<>();
 
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
     @JoinTable(name = "post_hashtag",
-           joinColumns = @JoinColumn(name = "post_id", referencedColumnName = "id"),
+            joinColumns = @JoinColumn(name = "post_id", referencedColumnName = "id"),
             inverseJoinColumns = @JoinColumn(name = "hashtag_id", referencedColumnName = "id")
     )
     private List<Hashtag> hashtag;
 
-    @ManyToOne
+    @ManyToOne(cascade = {CascadeType.ALL})
     @JoinColumn(name = "category_id")
     private Category category;
-
 
 
 }

@@ -25,6 +25,7 @@ public class UserService implements IUserService {
 
     @Autowired
     private CustomUserDetailsService customUserDetailsService;
+
     @Override
     public ResponseEntity<?> getAll() {
         return null;

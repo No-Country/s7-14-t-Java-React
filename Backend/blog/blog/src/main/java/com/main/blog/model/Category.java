@@ -1,9 +1,11 @@
 package com.main.blog.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Getter
@@ -22,6 +24,9 @@ public class Category {
     @Column(name = "description")
     private String description;
 
-    @OneToMany(mappedBy = "category")
-    private List<Post> posts;
+    @JsonIgnore
+    @OneToMany( cascade = {CascadeType.ALL})
+    private List<Post> posts = new ArrayList<>();
+
+
 }
