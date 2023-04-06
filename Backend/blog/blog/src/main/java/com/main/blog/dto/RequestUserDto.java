@@ -1,5 +1,6 @@
 package com.main.blog.dto;
 
+import com.main.blog.model.enums.UserStatus;
 import lombok.Data;
 
 @Data
@@ -11,7 +12,7 @@ public class RequestUserDto {
 
     private String email;
 
-    private String state;
+    private UserStatus status;
 
     private String phone;
 
