@@ -15,6 +15,7 @@ import java.util.List;
 @NoArgsConstructor
 @Table(name = "posts")
 public class Post {
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id", nullable = false)
@@ -26,14 +27,13 @@ public class Post {
     @Column(name = "date", nullable = false)
     private Date date;
 
-
-    @OneToMany( cascade=CascadeType.ALL, orphanRemoval = true)
-    @JoinColumn(name = "post_id",referencedColumnName = "id")
-    private List<Image> images= new ArrayList<>();
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    @JoinColumn(name = "post_id", referencedColumnName = "id")
+    private List<Image> images = new ArrayList<>();
 
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
     @JoinTable(name = "post_hashtag",
-           joinColumns = @JoinColumn(name = "post_id", referencedColumnName = "id"),
+            joinColumns = @JoinColumn(name = "post_id", referencedColumnName = "id"),
             inverseJoinColumns = @JoinColumn(name = "hashtag_id", referencedColumnName = "id")
     )
     private List<Hashtag> hashtag;
@@ -41,7 +41,6 @@ public class Post {
     @ManyToOne(cascade = {CascadeType.ALL})
     @JoinColumn(name = "category_id")
     private Category category;
-
 
 
 }
