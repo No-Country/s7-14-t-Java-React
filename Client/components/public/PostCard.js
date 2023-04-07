@@ -101,7 +101,7 @@ const LikeCommentCount = styled.span`
 const PostCard = ({posts}) => {
   return (
     
-    <Card href="/post/123">
+    <Card href="/publicacion/123">
         <Header>
             <ProfileImage src="/../public/images/profile-image.png" width={40} height={40} alt='profile-pic'/>
             <ProfileTitleContainer>

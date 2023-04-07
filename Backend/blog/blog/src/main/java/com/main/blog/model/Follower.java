@@ -4,13 +4,17 @@ package com.main.blog.model;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
+
+import java.util.List;
+
+import java.util.List;
 
 @Getter
 @Entity
 @Builder
+@NoArgsConstructor
+@AllArgsConstructor
 @Table(name = "followers")
 public class Follower {
 
@@ -23,6 +27,13 @@ public class Follower {
     @ManyToOne(fetch = FetchType.EAGER)
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     @JsonIgnore
-    @JoinColumn(name = "followerUser_id")
-    private User user;
+    @JoinColumn(name = "follower_user_id")
+    private User followerUser;
+
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+    @JsonIgnore
+    @JoinColumn(name = "followed_user_id")
+    private User followedUser;
 }

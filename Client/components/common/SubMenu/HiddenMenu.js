@@ -99,7 +99,7 @@ export const HiddenMenu = ({ open, action }) => {
 const Menu = styled(motion.aside)`
   position: fixed;
   backdrop-filter: blur(2px);
-  height: 320px;
+  height: 400px;
   filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.3));
   background-color: #000000cf;
   color: var(--primaryGreen1);
