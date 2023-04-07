@@ -32,7 +32,7 @@ const ProfileTitle = styled.h3`
     font-weight: 800;
 `
 const PostDate = styled.span`
-    font-size: 12px
+    font-size: 12px;
     font-weight: 400;
 `
 const LikeIcon = styled(Image)`
