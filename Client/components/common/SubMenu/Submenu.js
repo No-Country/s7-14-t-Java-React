@@ -2,7 +2,6 @@ import styled from 'styled-components'
 import { useCycle } from 'framer-motion'
 import { MenuButton } from './MenuButton'
 import { HiddenMenu } from './HiddenMenu'
-import { ButtonViolet } from './ButtonViolet'
 import { motion } from 'framer-motion'
 
 export const Submenu = () => {
@@ -24,7 +23,6 @@ export const Submenu = () => {
         <MenuButton isOpen={open} />
         <p>PubliShare</p>
       </motion.div>
-      <ButtonViolet />
 
       <HiddenMenu open={open} action={cycleOpen} />
     </Container>
