@@ -1,7 +1,14 @@
+<<<<<<< HEAD
 import styled from 'styled-components';
 import { useCycle } from 'framer-motion';
 import { MenuButton } from './MenuButton';
 import { HiddenMenu } from './HiddenMenu';
+=======
+import styled from 'styled-components'
+import { useCycle } from 'framer-motion'
+import { MenuButton } from './MenuButton'
+import { HiddenMenu } from './HiddenMenu'
+>>>>>>> dev
 import { motion } from 'framer-motion'
 
 export const Submenu = () => {

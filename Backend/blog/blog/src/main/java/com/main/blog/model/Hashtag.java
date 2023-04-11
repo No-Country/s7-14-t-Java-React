@@ -7,7 +7,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @Entity
-@Table(name = "hashtag")
+@Table(name = "hashtags")
 public class Hashtag {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

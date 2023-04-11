@@ -1,5 +1,6 @@
 package com.main.blog.model;
 
+import com.main.blog.model.enums.UserStatus;
 import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
@@ -36,7 +37,8 @@ public class User {
     private String password;
 
     @Column(name = "state")
-    private String state;
+    @Enumerated(EnumType.STRING)
+    private UserStatus status;
 
     @Column(name = "phone")
     private String phone;
@@ -59,14 +61,21 @@ public class User {
     @JoinColumn(name = "role_id")
     private Role role;
 
+    @OneToMany(mappedBy = "followerUser", cascade = CascadeType.ALL)
+    private List<Follower> followers = new ArrayList<>();
 
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
-    private List<Follower> followers = new ArrayList<Follower>();
+    @OneToMany(mappedBy = "followedUser", cascade = CascadeType.ALL)
+    private List<Follower> follows = new ArrayList<>();
 
+    @OneToMany(mappedBy = "userReported", cascade = CascadeType.ALL)
+    private List<Complaint> complaintsToTheUser = new ArrayList<>();
 
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
-    private List<Complaint> complaints = new ArrayList<Complaint>();
+    @OneToMany(mappedBy = "reportingUser", cascade = CascadeType.ALL)
+    private List<Complaint> userComplaints = new ArrayList<>();
 
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
-    private List<Banned> banneds = new ArrayList<Banned>();
+    @OneToMany(mappedBy = "blockingUser", cascade = CascadeType.ALL)
+    private List<Block> blockUsers = new ArrayList<>();
+
+    @OneToMany(mappedBy = "blockedUser", cascade = CascadeType.ALL)
+    private List<Block> blockedUsers = new ArrayList<>();
 }

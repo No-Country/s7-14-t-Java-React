@@ -87,7 +87,7 @@ public class AuthorizationService implements IAuthorizationService {
         user.setName(requestUserDto.getName());
         user.setLastName(requestUserDto.getLastName());
         user.setEmail(user.getEmail());
-        user.setState(requestUserDto.getState());
+        user.setStatus(requestUserDto.getStatus());
         user.setPhone(requestUserDto.getPhone());
 
 
