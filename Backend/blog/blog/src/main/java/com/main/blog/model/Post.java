@@ -6,6 +6,7 @@ import lombok.*;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Set;
 
 @Getter
 @Setter
@@ -42,5 +43,10 @@ public class Post {
     @JoinColumn(name = "category_id")
     private Category category;
 
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(name = "likes",
+            joinColumns = @JoinColumn(name = "post_id", referencedColumnName = "id"),
+            inverseJoinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"))
+    private Set<User> likes;
 
 }

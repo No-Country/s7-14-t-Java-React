@@ -12,8 +12,10 @@ public class RequestPostDto {
 
     private List<ImageDto> images;
 
-    private Date date = new Date();
+    private Date date;
+
     private List<HashtagDto> hashtag;
 
     private ResponseCategoryDto category;
+
 }

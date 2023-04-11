@@ -17,9 +17,9 @@ public class CategoryController {
     private Mapper mapper;
 
     @Autowired
-    private ICategoryService iCaregoryService;
+    private ICategoryService iCategoryService;
     @GetMapping("")
     public ResponseEntity<?> getAllCategories() {
-        return iCaregoryService.getAllCategories();
+        return iCategoryService.getAllCategories();
     }
 }
