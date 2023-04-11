@@ -1,1 +1,0 @@
-self.__REACT_LOADABLE_MANIFEST={"publicar\\index.js -> react-quill":{"id":"publicar\\index.js -> react-quill","files":["static/chunks/node_modules_react-quill_lib_index_js.js"]}}
