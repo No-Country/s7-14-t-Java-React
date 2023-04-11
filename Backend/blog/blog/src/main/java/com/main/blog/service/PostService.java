@@ -3,6 +3,7 @@ package com.main.blog.service;
 import com.main.blog.dto.HashtagDto;
 import com.main.blog.dto.ImageDto;
 import com.main.blog.dto.RequestPostDto;
+import com.main.blog.dto.UserIdDto;
 import com.main.blog.model.Category;
 import com.main.blog.model.Hashtag;
 import com.main.blog.model.Image;
@@ -32,6 +33,7 @@ public class PostService implements IPostService {
 
     @Autowired
     private IHashtagRepository iHashtagRepository;
+
     @Autowired
     private IImageRepository iImageRepository;
     @Autowired
@@ -39,6 +41,7 @@ public class PostService implements IPostService {
 
     @Autowired
     private Mapper mapper;
+
     @Override
     public ResponseEntity<?> getPostById(Long id) {
         Optional<Post> post = iPostRepository.findById(id);
@@ -47,22 +50,22 @@ public class PostService implements IPostService {
 
     @Override
     public ResponseEntity<?> createPost(RequestPostDto requestPost) {
-          List<HashtagDto> hashtagDto = requestPost.getHashtag();
-          Post post= new Post();
-          post.setText(requestPost.getText());
-          if(!hashtagDto.isEmpty() || hashtagDto != null) {
-                 List<Hashtag> hashtags = hashtagDto.stream().map(hashtag->(mapper.getMapper().map(hashtag , Hashtag.class))).collect(Collectors.toList());
-                  List <Hashtag> newHashtagList = checkHashtag(hashtags);
-                  post.setHashtag(newHashtagList);
-              }
-           List<ImageDto> imagesDto = requestPost.getImages();
-           List<Image> images = null;
-           if(!imagesDto.isEmpty() || imagesDto != null){
-                  images = imagesDto.stream().map(image->(mapper.getMapper().map(image , Image.class))).collect(Collectors.toList());
-                  post.setImages(images);
-              }
-            Category newCategory = null;
-        if(requestPost.getCategory()!= null) {
+        List<HashtagDto> hashtagDto = requestPost.getHashtag();
+        Post post = new Post();
+        post.setText(requestPost.getText());
+        if (!hashtagDto.isEmpty() || hashtagDto != null) {
+            List<Hashtag> hashtags = hashtagDto.stream().map(hashtag -> (mapper.getMapper().map(hashtag, Hashtag.class))).collect(Collectors.toList());
+            List<Hashtag> newHashtagList = checkHashtag(hashtags);
+            post.setHashtag(newHashtagList);
+        }
+        List<ImageDto> imagesDto = requestPost.getImages();
+        List<Image> images = null;
+        if (!imagesDto.isEmpty() || imagesDto != null) {
+            images = imagesDto.stream().map(image -> (mapper.getMapper().map(image, Image.class))).collect(Collectors.toList());
+            post.setImages(images);
+        }
+        Category newCategory = null;
+        if (requestPost.getCategory() != null) {
             newCategory = mapper.getMapper().map(requestPost.getCategory(), Category.class);
             Category check = iCategoryRepository.findByName(requestPost.getCategory().getName());
             post.setCategory(check);
@@ -74,37 +77,51 @@ public class PostService implements IPostService {
     }
 
     @Override
+    public ResponseEntity<?> getAllPosts() {
+        List<Post> posts = iPostRepository.findAll();
+        List<RequestPostDto> postsDto = posts.stream().map(post -> (mapper.getMapper().map(post, RequestPostDto.class))).collect(Collectors.toList());
+        return ResponseEntity.status(HttpStatus.ACCEPTED).body(postsDto);
+    }
+    @Override
     public ResponseEntity<?> deletePost(Long id) {
         return null;
     }
 
     @Override
-    public ResponseEntity<?> updatePost(Long id, Post post) {
+    public ResponseEntity<?> updatePost(Long id, RequestPostDto requestPostDto) {
         return null;
     }
 
     @Override
-    public ResponseEntity<?> getAllPosts() {
-        List<Post> posts = iPostRepository.findAll();
-        List<RequestPostDto> postsDto = posts.stream().map(post->(mapper.getMapper().map(post , RequestPostDto.class))).collect(Collectors.toList());
-        return ResponseEntity.status(HttpStatus.ACCEPTED).body(postsDto);
+    public ResponseEntity<?> getPostByCategory(Long categoryId) {
+        return null;
+    }
+
+    @Override
+    public ResponseEntity<?> likePost(Long id, UserIdDto userIdDto) {
+        return null;
+    }
+
+    @Override
+    public ResponseEntity<?> unlikePost(Long id, UserIdDto userIdDto) {
+        return null;
     }
 
     public List<Hashtag> checkHashtag(List<Hashtag> hashtag) {
         List<Hashtag> dbHashtags = iHashtagRepository.findAll();
-        if(dbHashtags.isEmpty() || dbHashtags == null){
-          return iHashtagRepository.saveAll(hashtag);
+        if (dbHashtags.isEmpty() || dbHashtags == null) {
+            return iHashtagRepository.saveAll(hashtag);
         }
         List<Hashtag> repeatedHashtags = new ArrayList<>();
         List<Hashtag> hashtagToSave = new ArrayList<>();
 
-        for (int i=0; i<hashtag.size();i++) {
+        for (int i = 0; i < hashtag.size(); i++) {
             boolean flag = true;
             int index = 0;
             for (int j = 0; j < dbHashtags.size(); j++) {
                 if (hashtag.get(i).getName().equalsIgnoreCase(dbHashtags.get(j).getName())) {
                     flag = false;
-                    index= j;
+                    index = j;
                 }
             }
             if (flag) {
@@ -113,9 +130,9 @@ public class PostService implements IPostService {
                 repeatedHashtags.add(dbHashtags.get(index));
             }
         }
-       List<Hashtag> newHashtags = iHashtagRepository.saveAll(hashtagToSave);
+        List<Hashtag> newHashtags = iHashtagRepository.saveAll(hashtagToSave);
 
-        for (Hashtag actual: newHashtags) {
+        for (Hashtag actual : newHashtags) {
             repeatedHashtags.add(actual);
         }
 
