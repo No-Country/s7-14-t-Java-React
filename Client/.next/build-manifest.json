@@ -25,10 +25,15 @@
       "static/chunks/main.js",
       "static/chunks/pages/_error.js"
     ],
-    "/publicar": [
+    "/explorar": [
       "static/chunks/webpack.js",
       "static/chunks/main.js",
-      "static/chunks/pages/publicar.js"
+      "static/chunks/pages/explorar.js"
+    ],
+    "/explorar/categoria/[categoryId]": [
+      "static/chunks/webpack.js",
+      "static/chunks/main.js",
+      "static/chunks/pages/explorar/categoria/[categoryId].js"
     ]
   },
   "ampFirstPages": []

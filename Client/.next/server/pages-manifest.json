@@ -2,5 +2,6 @@
   "/_app": "pages/_app.js",
   "/_error": "pages/_error.js",
   "/_document": "pages/_document.js",
-  "/publicar": "pages/publicar.js"
+  "/explorar": "pages/explorar.js",
+  "/explorar/categoria/[categoryId]": "pages/explorar/categoria/[categoryId].js"
 }
