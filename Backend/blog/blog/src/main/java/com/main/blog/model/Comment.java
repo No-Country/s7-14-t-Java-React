@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 import lombok.*;
+import org.hibernate.annotations.CreationTimestamp;
 
 import java.util.Date;
 
@@ -24,6 +25,7 @@ public class Comment {
     @Column(name="content")
     private String content;
 
+    @CreationTimestamp
     @Column(name= "date")
     private Date date;
 

@@ -1,0 +1,22 @@
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  info:
+    env:
+      enabled: true
+
+spring:
+  datasource:
+    url: ${mySqlUrl}
+    username: "postgres"
+    password: ${mySqlPassword}
+    name: Publishare
+
+info:
+  application:
+    name: BlogApplication
+    description:
+    author: Victorio Sarnaglia
+    version: '@project.version@'
