@@ -37,9 +37,12 @@ public class CommentService implements ICommentService {
 
     @Override
     public ResponseEntity<?> postComment(CommentDto commentDto, Long postId, String token) {
+        if (token.startsWith("Bearer ")) {
+            token = token.substring(7);
+        }
         try {
-
             Comment comment = mapper.getMapper().map(commentDto, Comment.class);
+            comment.setDate(new Date());
             User user = iUserRepository.findByEmail(jwtservice.extractUserEmail(token));
             if (user == null) {
                 throw new ResourceNotFoundException("User not found");

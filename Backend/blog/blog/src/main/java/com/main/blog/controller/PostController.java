@@ -1,5 +1,6 @@
 package com.main.blog.controller;
 
+import com.main.blog.dto.PatchPostDto;
 import com.main.blog.dto.RequestPostDto;
 import com.main.blog.dto.UserIdDto;
 import com.main.blog.service.interfaces.IPostService;
@@ -19,14 +20,19 @@ public class PostController {
     @Autowired
     private IPostService iPostService;
 
-    @GetMapping("")
+    @GetMapping("/")
     public ResponseEntity<?> getAllPosts() {
         return iPostService.getAllPosts();
     }
 
-    @PostMapping("")
+    @PostMapping("/")
     public ResponseEntity<?> createPost(@RequestBody RequestPostDto requestPostDto) {
         return iPostService.createPost(requestPostDto);
+    }
+
+    @PatchMapping("/{id}")
+    public ResponseEntity<?> patchPost(@PathVariable Long id, @RequestBody PatchPostDto postDto) {
+        return iPostService.updatePost(id, postDto);
     }
 
     @DeleteMapping("/{id}")
@@ -39,18 +45,13 @@ public class PostController {
         return iPostService.getPostByCategory(categoryId);
     }
 
-    @PatchMapping("/{id}")
-    public ResponseEntity<?> patchPost(@PathVariable Long id, @RequestBody RequestPostDto requestPostDto) {
-        return iPostService.updatePost(id, requestPostDto);
+    @PostMapping("/like/{id}")
+    public ResponseEntity<?> likePost(@PathVariable Long id, @RequestHeader("Authorization") String token) {
+        return iPostService.likePost(id, token);
     }
 
-    @PostMapping("/{id}")
-    public ResponseEntity<?> likePost(@PathVariable Long id, @RequestBody UserIdDto userIdDto) {
-        return iPostService.likePost(id, userIdDto);
-    }
-
-    @DeleteMapping("{id}")
-    public ResponseEntity<?> unlikePost(@PathVariable Long id, @RequestBody UserIdDto userIdDto) {
-        return iPostService.unlikePost(id, userIdDto);
+    @DeleteMapping("/like/{id}")
+    public ResponseEntity<?> unlikePost(@PathVariable Long id, @RequestHeader("Authorization") String token) {
+        return iPostService.likePost(id, token);
     }
 }

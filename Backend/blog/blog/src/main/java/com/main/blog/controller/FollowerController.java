@@ -32,8 +32,8 @@ public class FollowerController {
         return followerService.subscribeFollower(userId, token);
     }
 
-    @DeleteMapping("/{followerId}")
-    public ResponseEntity<?> unsubscribeFollower(@PathVariable Long followerId) {
-        return followerService.unsubscribeFollower(followerId);
+    @DeleteMapping("/{userFollowedId}")
+    public ResponseEntity<?> unsubscribeFollower(@PathVariable Long userFollowedId, @RequestHeader("Authorization") String token) {
+        return followerService.unsubscribeFollower(userFollowedId, token);
     }
 }

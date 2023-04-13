@@ -3,6 +3,7 @@ package com.main.blog.controller;
 
 import com.main.blog.dto.ComplaintDto;
 import com.main.blog.dto.RequestComplaintDto;
+import com.main.blog.dto.ResolveComplaintDto;
 import com.main.blog.model.enums.StatusComplaint;
 import com.main.blog.service.interfaces.IComplaintService;
 import com.main.blog.util.Mapper;
@@ -32,12 +33,12 @@ public class ComplaintController {
     }
 
     @PatchMapping("/{id}")
-    public ResponseEntity<?> resolveComplaint(@PathVariable Long id, StatusComplaint status) {
+    public ResponseEntity<?> resolveComplaint(@PathVariable Long id, @RequestBody ResolveComplaintDto status) {
         return complaintService.resolveComplaint(id, status);
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<?> getCompalint(@PathVariable Long id) {
+    public ResponseEntity<?> getComplaint(@PathVariable Long id) {
         return complaintService.getComplaint(id);
     }
 }

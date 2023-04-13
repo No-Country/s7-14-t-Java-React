@@ -10,6 +10,6 @@ import java.util.Optional;
 
 
 public interface IPostRepository extends JpaRepository<Post, Long> {
-    Post findByCategoryId(Long categoryId);
+    List<Post> findByCategoryId(Long categoryId);
 
 }

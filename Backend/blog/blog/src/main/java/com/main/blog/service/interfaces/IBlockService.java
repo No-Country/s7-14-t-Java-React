@@ -7,5 +7,5 @@ public interface IBlockService {
 
     ResponseEntity<?> addBlock(Long userId, String token);
 
-    ResponseEntity<?> deleteBlock(Long blockId);
+    ResponseEntity<?> deleteBlock(Long userId, String token);
 }

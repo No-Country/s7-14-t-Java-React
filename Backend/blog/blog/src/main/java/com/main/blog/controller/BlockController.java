@@ -16,21 +16,21 @@ public class BlockController {
     private Mapper mapper;
 
     @Autowired
-    IBlockService bannedService;
+    IBlockService blockService;
 
     @GetMapping("/{userId}")
     public ResponseEntity<?> getUserBans(@PathVariable Long userId) {
-        return bannedService.getUserBans(userId);
+        return blockService.getUserBans(userId);
     }
 
     @PostMapping("/{userId}")
     public ResponseEntity<?> addBlock(@PathVariable Long userId, @RequestHeader("Authorization") String token) {
-        return bannedService.addBlock(userId, token);
+        return blockService.addBlock(userId, token);
     }
 
-    @DeleteMapping("/{blockId}")
-    public ResponseEntity<?> deleteBlock(@PathVariable Long blockId) {
-        return bannedService.deleteBlock(blockId);
+    @DeleteMapping("/{userId}")
+    public ResponseEntity<?> deleteBlock(@PathVariable Long userId, @RequestHeader ("Authorization")String token) {
+        return blockService.deleteBlock(userId, token);
     }
 
 }
