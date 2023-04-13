@@ -47,7 +47,7 @@ public class SecurityConfig {
                 .csrf().disable()
                 .authorizeHttpRequests()
                 .requestMatchers(HttpMethod.GET, "/users/**","/categories/**","/post/**","/images/**").permitAll()
-                .requestMatchers(HttpMethod.POST, "/products/search").permitAll()
+                .requestMatchers(HttpMethod.POST, "/").permitAll()
                 .requestMatchers("/auth/**").permitAll()
                 .anyRequest()
                 .authenticated()

@@ -51,4 +51,7 @@ public class Post {
             inverseJoinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"))
     private Set<User> likes;
 
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user;
 }

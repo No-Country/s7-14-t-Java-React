@@ -9,8 +9,7 @@ import org.springframework.http.ResponseEntity;
 public interface IPostService {
     ResponseEntity<?> getPostById(Long id);
 
-    ResponseEntity<?> createPost(RequestPostDto post);
-
+    ResponseEntity<?> createPost(RequestPostDto post, String token);
 
     ResponseEntity<?> deletePost(Long id);
 
@@ -22,4 +21,5 @@ public interface IPostService {
 
     ResponseEntity<?> likePost(Long id, String token);
 
+    ResponseEntity<?> getUserPosts(Long userId);
 }
