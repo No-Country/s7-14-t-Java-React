@@ -9,5 +9,5 @@ public interface IFollowerService {
 
     ResponseEntity<?> subscribeFollower(Long userId, String token);
 
-    ResponseEntity<?> unsubscribeFollower(Long followerId);
+    ResponseEntity<?> unsubscribeFollower(Long followerId, String token);
 }

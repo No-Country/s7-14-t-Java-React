@@ -8,5 +8,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.Set;
 
 public interface IBlockRepository extends JpaRepository<Block, Long> {
-    Set<User> findByBlockedUserId(Long userId);
+    Set<Block> findByBlockingUserId(Long userId);
+
+    Block findByBlockedUserIdAndBlockingUserId(Long blockedUserId, Long blockingUserId);
 }

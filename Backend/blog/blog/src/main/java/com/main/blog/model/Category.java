@@ -2,8 +2,7 @@ package com.main.blog.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,6 +10,9 @@ import java.util.List;
 @Getter
 @Setter
 @Entity
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 @Table(name = "categories")
 public class Category {
     @Id
@@ -25,7 +27,7 @@ public class Category {
     private String description;
 
     @JsonIgnore
-    @OneToMany( cascade = {CascadeType.ALL})
+    @OneToMany(cascade = {CascadeType.ALL})
     private List<Post> posts = new ArrayList<>();
 
 

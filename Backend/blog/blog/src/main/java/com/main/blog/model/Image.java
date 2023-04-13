@@ -11,7 +11,6 @@ import lombok.Setter;
 @Table(name = "images")
 public class Image {
 
-
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id", nullable = false)
@@ -22,6 +21,5 @@ public class Image {
 
     @Column(name = "dataImage", nullable = false)
     private String dataImage;
-
 
 }

@@ -1,5 +1,6 @@
 package com.main.blog.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.main.blog.model.enums.UserStatus;
 import jakarta.persistence.*;
 import lombok.*;
@@ -61,21 +62,27 @@ public class User {
     @JoinColumn(name = "role_id")
     private Role role;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "followerUser", cascade = CascadeType.ALL)
     private List<Follower> followers = new ArrayList<>();
 
+    @JsonIgnore
     @OneToMany(mappedBy = "followedUser", cascade = CascadeType.ALL)
     private List<Follower> follows = new ArrayList<>();
 
+    @JsonIgnore
     @OneToMany(mappedBy = "userReported", cascade = CascadeType.ALL)
     private List<Complaint> complaintsToTheUser = new ArrayList<>();
 
+    @JsonIgnore
     @OneToMany(mappedBy = "reportingUser", cascade = CascadeType.ALL)
     private List<Complaint> userComplaints = new ArrayList<>();
 
+    @JsonIgnore
     @OneToMany(mappedBy = "blockingUser", cascade = CascadeType.ALL)
     private List<Block> blockUsers = new ArrayList<>();
 
+    @JsonIgnore
     @OneToMany(mappedBy = "blockedUser", cascade = CascadeType.ALL)
     private List<Block> blockedUsers = new ArrayList<>();
 }
