@@ -10,12 +10,6 @@ import java.util.Optional;
 
 
 public interface IPostRepository extends JpaRepository<Post, Long> {
- Optional<Post> findById(Long id);
-
- Post save(Post post);
-
- List<Post> findAll();
- void deleteById(Long id);
-
+    List<Post> findByCategoryId(Long categoryId);
 
 }

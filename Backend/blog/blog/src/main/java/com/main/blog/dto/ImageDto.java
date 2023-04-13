@@ -6,5 +6,5 @@ import lombok.Data;
 public class ImageDto {
     private String name;
 
-   private String dataImage;
+    private String dataImage;
 }
