@@ -46,7 +46,7 @@ public class SecurityConfig {
         return http.cors().and()
                 .csrf().disable()
                 .authorizeHttpRequests()
-                .requestMatchers(HttpMethod.GET, "/users/**","/categories/**","/post/**","/images/**").permitAll()
+                .requestMatchers(HttpMethod.GET, "/users/**","/categories/**","/posts/**","/images/**").permitAll()
                 .requestMatchers(HttpMethod.POST, "/products/search").permitAll()
                 .requestMatchers("/auth/**").permitAll()
                 .anyRequest()
