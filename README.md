@@ -59,7 +59,7 @@
     </tr>
     <tr>
         <td>
-            <img src="" width="96px" />
+            <img src="https://avatars.githubusercontent.com/u/11007444?v=4" width="96px" />
         </td>
         <td>
             <p>Antonio Villacrés</p>
