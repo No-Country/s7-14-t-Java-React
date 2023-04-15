@@ -86,7 +86,7 @@
     </tr>
     <tr>
         <td>
-            <img src="" width="96px" />
+            <img src="https://avatars.githubusercontent.com/u/75190112?v=4" width="96px" />
         </td>
         <td>
             <p>Nicolle Rosa Andujar</p>
