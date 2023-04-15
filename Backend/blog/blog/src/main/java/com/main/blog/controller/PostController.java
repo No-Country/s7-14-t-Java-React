@@ -6,6 +6,7 @@ import com.main.blog.dto.UserIdDto;
 import com.main.blog.service.interfaces.IPostService;
 
 import com.main.blog.util.Mapper;
+import org.apache.coyote.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -20,14 +21,24 @@ public class PostController {
     @Autowired
     private IPostService iPostService;
 
+    @GetMapping("user/{userId}")
+    public ResponseEntity<?> getUserPosts(@PathVariable Long userId) {
+        return iPostService.getUserPosts(userId);
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<?> getPost(@PathVariable Long id) {
+        return iPostService.getPostById(id);
+    }
+
     @GetMapping("/")
     public ResponseEntity<?> getAllPosts() {
         return iPostService.getAllPosts();
     }
 
     @PostMapping("/")
-    public ResponseEntity<?> createPost(@RequestBody RequestPostDto requestPostDto) {
-        return iPostService.createPost(requestPostDto);
+    public ResponseEntity<?> createPost(@RequestBody RequestPostDto requestPostDto, @RequestHeader("Authorization") String token) {
+        return iPostService.createPost(requestPostDto, token);
     }
 
     @PatchMapping("/{id}")
@@ -40,7 +51,7 @@ public class PostController {
         return iPostService.deletePost(id);
     }
 
-    @GetMapping("/{categoryId}")
+    @GetMapping("/category/{categoryId}")
     public ResponseEntity<?> getPostsByCategory(@PathVariable Long categoryId) {
         return iPostService.getPostByCategory(categoryId);
     }

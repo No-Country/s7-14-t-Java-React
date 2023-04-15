@@ -46,9 +46,20 @@ public class PostService implements IPostService {
     }
 
     @Override
-    public ResponseEntity<?> createPost(RequestPostDto requestPost) {
+    public ResponseEntity<?> getUserPosts(Long userId) {
+        Set<Post> posts = iPostRepository.findByUserId(userId);
+        return ResponseEntity.status(HttpStatus.ACCEPTED).body(posts.stream().map(post -> mapper.getMapper().map(post, ResponsePostDto.class)));
+    }
+
+
+    @Override
+    public ResponseEntity<?> createPost(RequestPostDto requestPost, String token) {
+        if (token.startsWith("Bearer ")) {
+            token = token.substring(7);
+        }
+        User user = iUserRepository.findByEmail(jwtService.extractUserEmail(token));
         List<HashtagDto> hashtagDto = requestPost.getHashtag();
-        Post post = Post.builder().date(new Date()).text(requestPost.getText()).build();
+        Post post = Post.builder().date(new Date()).text(requestPost.getText()).user(user).build();
         if (!hashtagDto.isEmpty()) {
             List<Hashtag> hashtags = checkHashtag(hashtagDto.stream().map(hashtag -> (mapper.getMapper().map(hashtag, Hashtag.class))).collect(Collectors.toList()));
             post.setHashtag(hashtags);
@@ -125,6 +136,7 @@ public class PostService implements IPostService {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
         }
     }
+
 
     public List<Hashtag> checkHashtag(List<Hashtag> hashtags) {
         List<Hashtag> dbHashtags = new ArrayList<>((hashtags.stream().map(hashtag -> iHashtagRepository.findByName(hashtag.getName())).toList()));

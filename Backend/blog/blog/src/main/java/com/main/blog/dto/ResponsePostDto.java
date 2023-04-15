@@ -8,6 +8,8 @@ import java.util.List;
 @Data
 public class ResponsePostDto {
 
+    private Long id;
+
     private String text;
 
     private List<ImageDto> images;
@@ -17,4 +19,6 @@ public class ResponsePostDto {
     private List<HashtagDto> hashtag;
 
     private ResponseCategoryDto category;
+
+    private ResponseUserDto user;
 }

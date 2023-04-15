@@ -42,7 +42,6 @@ public class CommentService implements ICommentService {
         }
         try {
             Comment comment = mapper.getMapper().map(commentDto, Comment.class);
-            comment.setDate(new Date());
             User user = iUserRepository.findByEmail(jwtservice.extractUserEmail(token));
             if (user == null) {
                 throw new ResourceNotFoundException("User not found");

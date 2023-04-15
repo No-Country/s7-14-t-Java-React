@@ -7,7 +7,7 @@ import AddComment from './AddComment'
 
 const Card = styled.article`
     margin: 16px 0;
-    width: 90%;
+    width: 100%;
     height: auto;
     border-radius: 8px;
     background: #FFFFFF;

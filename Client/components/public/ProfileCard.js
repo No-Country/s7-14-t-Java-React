@@ -4,7 +4,7 @@ import Image from 'next/image'
 
 const Card = styled.section`
     display: flex;
-    width: 90%;
+    width: 100%;
     border-radius: 8px;
     background: #FFFFFF;
     box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.25);
