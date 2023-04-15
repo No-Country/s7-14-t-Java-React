@@ -24,6 +24,31 @@ const schema = yup.object().shape({
   name: yup.string().required('Campo requerido'),
 })
 
+const postRegister = async (data) => {
+  const url = "https://sleek-pen-production-f98d.up.railway.app/auth/signUp"
+
+  try {
+    const res = await fetch(url, {
+      method:'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        "name": data.name,
+        "lastName": data.lastName,
+        "email": data.email,
+        "password": data.password,
+        "address": "string",
+        "phone": "12123"
+      })
+    })
+    const result = await res
+    return result
+  } catch (error) {
+    console.log(error)
+  }
+}
+
 export const RegisterContent = () => {
   const {
     register,
@@ -34,7 +59,9 @@ export const RegisterContent = () => {
 
   const onSubmit = (data) => {
     console.log(data)
+    postRegister(data)
     reset()
+
   }
   return (
     <Container>
