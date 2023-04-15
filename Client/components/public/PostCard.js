@@ -5,7 +5,7 @@ import Link from 'next/link'
 import { Tags, TagsContainer } from '../common/Tags'
 
 const Card = styled(Link)`
-    margin-top: 200px;
+    margin-top: 20px;
     width: 90%;
     height: 400px;
     border-radius: 8px;

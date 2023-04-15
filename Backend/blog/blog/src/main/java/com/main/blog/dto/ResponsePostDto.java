@@ -12,6 +12,8 @@ public class ResponsePostDto {
 
     private String text;
 
+    private String title;
+
     private List<ImageDto> images;
 
     private Date date;
