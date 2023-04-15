@@ -42,7 +42,7 @@ public class PostService implements IPostService {
     @Override
     public ResponseEntity<?> getPostById(Long id) {
         Optional<Post> post = iPostRepository.findById(id);
-        return ResponseEntity.status(HttpStatus.ACCEPTED).body(mapper.getMapper().map(post, RequestPostDto.class));
+        return ResponseEntity.status(HttpStatus.ACCEPTED).body(mapper.getMapper().map(post, ResponsePostDto.class));
     }
 
     @Override
@@ -59,7 +59,7 @@ public class PostService implements IPostService {
         }
         User user = iUserRepository.findByEmail(jwtService.extractUserEmail(token));
         List<HashtagDto> hashtagDto = requestPost.getHashtag();
-        Post post = Post.builder().date(new Date()).text(requestPost.getText()).user(user).build();
+        Post post = Post.builder().date(new Date()).text(requestPost.getText()).user(user).title(requestPost.getTitle()).build();
         if (!hashtagDto.isEmpty()) {
             List<Hashtag> hashtags = checkHashtag(hashtagDto.stream().map(hashtag -> (mapper.getMapper().map(hashtag, Hashtag.class))).collect(Collectors.toList()));
             post.setHashtag(hashtags);
@@ -80,7 +80,7 @@ public class PostService implements IPostService {
     @Override
     public ResponseEntity<?> getAllPosts() {
         List<Post> posts = iPostRepository.findAll();
-        List<RequestPostDto> postsDto = posts.stream().map(post -> (mapper.getMapper().map(post, RequestPostDto.class))).collect(Collectors.toList());
+        List<ResponsePostDto> postsDto = posts.stream().map(post -> (mapper.getMapper().map(post, ResponsePostDto.class))).collect(Collectors.toList());
         return ResponseEntity.status(HttpStatus.ACCEPTED).body(postsDto);
     }
 
@@ -101,6 +101,7 @@ public class PostService implements IPostService {
         try {
             Post post = iPostRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Post not found"));
             post.setText(requestPostDto.getText());
+            post.setTitle(requestPostDto.getTitle());
             post.getImages().clear();
             post.getImages().addAll(requestPostDto.getImages().stream().map(imageDto -> mapper.getMapper().map(imageDto, Image.class)).toList());
             List<Hashtag> hashtags = checkHashtag(requestPostDto.getHashtag().stream().map(hashtag -> (mapper.getMapper().map(hashtag, Hashtag.class))).collect(Collectors.toList()));
@@ -114,7 +115,8 @@ public class PostService implements IPostService {
     @Override
     public ResponseEntity<?> getPostByCategory(Long categoryId) {
         List<Post> posts = iPostRepository.findByCategoryId(categoryId).stream().toList();
-        return ResponseEntity.status(HttpStatus.ACCEPTED).body(posts);
+        List<ResponsePostDto> postsDto = posts.stream().map(post -> (mapper.getMapper().map(post, ResponsePostDto.class))).collect(Collectors.toList());
+        return ResponseEntity.status(HttpStatus.ACCEPTED).body(postsDto);
     }
 
     @Override

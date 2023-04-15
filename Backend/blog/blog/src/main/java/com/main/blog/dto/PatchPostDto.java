@@ -8,6 +8,8 @@ import java.util.List;
 @Data
 public class PatchPostDto {
 
+    private String title;
+
     private String text;
 
     private List<ImageDto> images;
