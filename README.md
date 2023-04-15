@@ -1,5 +1,5 @@
 <div align="center">
-  <h1>Mueblerama</h1>
+  <h1>PubliShare</h1>
 </div>
 
 <br>
@@ -36,7 +36,6 @@
 <span>&nbsp;&nbsp;•&nbsp;&nbsp;</span>
 <a href="https://hibernate.org/">Hibernate</a>
 
-https://sleek-pen-production-f98d.up.railway.app/
 
 
 ## 📦 Entregables
