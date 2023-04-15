@@ -68,7 +68,7 @@
     </tr>
     <tr>
         <td>
-            <img src="" width="96px" />
+            <img src="https://avatars.githubusercontent.com/u/103151449?s=64&v=4" width="96px" />
         </td>
         <td>
             <p>Roberth Lopez</p>
