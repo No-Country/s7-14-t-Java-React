@@ -30,7 +30,8 @@ export const Submenu = () => {
 }
 
 const Container = styled(motion.div)`
-  background-color: #bbbbbb;
+  width: 100%;
+  background-color: #10253E;
   color: var(--gray3);
   height: 5rem;
   display: flex;
@@ -50,7 +51,7 @@ const Container = styled(motion.div)`
     p {
       font-weight: 600;
       font-size: 20px;
-      color: #454545;
+      color: #FFFFFF;
     }
   }
 `
