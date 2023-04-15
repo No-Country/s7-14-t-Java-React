@@ -6,7 +6,7 @@ export const MenuButton = ({
   width = 15,
   height = 15,
   strokeWidth = 4,
-  color = '#9F9F9F',
+  color = '#FFFFFF',
   transition = null,
   lineProps = null,
   ...props
