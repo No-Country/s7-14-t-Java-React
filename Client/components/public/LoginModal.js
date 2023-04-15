@@ -22,6 +22,27 @@ const schema = yup.object().shape({
   password: yup.string().required('La contraseña es requerida'),
 })
 
+const postLogin = async (data) => {
+  const url = "https://sleek-pen-production-f98d.up.railway.app/auth/signIn"
+
+  try {
+    const res = await fetch(url, {
+      method:'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        "email": data.email,
+        "password": data.password,
+      })
+    })
+    const result = await res.json()
+    return console.log(result)
+  } catch (error) {
+    console.log(error)
+  }
+}
+
 export const LoginModal = () => {
   const [visible, setVisible] = useState(false)
   const {
@@ -34,6 +55,7 @@ export const LoginModal = () => {
 
   const onSubmit = (data) => {
     reset()
+    postLogin(data)
     setContextDataGlobal({
       ...contextDataGlobal,
       modalActive: '',

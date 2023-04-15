@@ -1,11 +1,12 @@
 import React from 'react'
 import styled from 'styled-components'
 import Image from 'next/image'
+import { Tags, TagsContainer } from '../common/Tags'
 
 const Card = styled.section`
     display: flex;
     flex-direction: column;
-    width: 90%;
+    width: 100%;
     height: auto;
     border-radius: 8px;
     background: #FFFFFF;
@@ -30,25 +31,6 @@ const Title = styled.h3`
 `
 const LikeIcon = styled(Image)`
     justify-self: end;
-`
-
-const TagsContainer = styled.div`
-    width: 96px;
-    height: 24px;
-    border: 1px solid #6F6E6E;
-    border-radius: 5px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 8px 0;
-`
-
-const Tags = styled.span`
-    font-style: normal;
-    font-weight: 400;
-    font-size: 12px;
-    line-height: 24px;
-    letter-spacing: 0.15px;
 `
 
 const PostText = styled.p`

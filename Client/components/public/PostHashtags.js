@@ -1,3 +1,4 @@
+import ArrowRight from '@/public/icons/ArrowRight'
 import React from 'react'
 import styled from 'styled-components'
 
@@ -5,7 +6,7 @@ const Container = styled.section`
     display: flex;
     margin-top: 16px;
     flex-wrap: wrap;
-    width: 90%;
+    width: 100%;
     gap: 10px;
     justify-content: space-between;
 
@@ -25,18 +26,18 @@ const Hashtags = styled.div`
     line-height: 16px;
 `
 
-const PostHashtags = () => {
+const PostHashtags = ({postHashtagsInfo}) => {
+    console.log(postHashtagsInfo)
   return (
     <Container>
-        <Hashtags>
-            #PostHashtags
-        </Hashtags>
-        <Hashtags>
-            #PostHashtags
-        </Hashtags>
-        <Hashtags>
-            #PostHashtags
-        </Hashtags>
+        {postHashtagsInfo && postHashtagsInfo.map((e, i)=>{
+            return (
+                <Hashtags key={`${i}-${e}`}>
+                    {e}
+                </Hashtags>
+            )
+
+        })}
     </Container>
   )
 }

@@ -2,6 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import Image from 'next/image'
 import Link from 'next/link'
+import { Tags, TagsContainer } from '../common/Tags'
 
 const Card = styled(Link)`
     margin-top: 200px;
@@ -32,7 +33,7 @@ const ProfileTitle = styled.h3`
     font-weight: 800;
 `
 const PostDate = styled.span`
-    font-size: 12px
+    font-size: 12px;
     font-weight: 400;
 `
 const LikeIcon = styled(Image)`
@@ -46,23 +47,6 @@ const Title = styled.h3`
     font-style: normal;
     font-weight: 500;
     font-size: 20px;
-    line-height: 24px;
-    letter-spacing: 0.15px;
-`
-const TagsContainer = styled.div`
-    width: 96px;
-    height: 24px;
-    border: 1px solid #6F6E6E;
-    border-radius: 5px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 8px 0;
-`
-const Tags = styled.span`
-    font-style: normal;
-    font-weight: 400;
-    font-size: 12px;
     line-height: 24px;
     letter-spacing: 0.15px;
 `
