@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 
 @Controller
 @RequestMapping("/categories")
+@CrossOrigin("*")
 public class CategoryController {
     @Autowired
     private Mapper mapper;

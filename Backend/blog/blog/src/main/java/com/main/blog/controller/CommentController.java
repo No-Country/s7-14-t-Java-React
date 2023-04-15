@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 
 @Controller
 @RequestMapping("/comments")
+@CrossOrigin("*")
 public class CommentController {
 
     @Autowired

@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 
 @Controller
 @RequestMapping("/blocks")
+@CrossOrigin("*")
 public class BlockController {
 
     @Autowired
