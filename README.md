@@ -42,7 +42,7 @@
 
 - ⚙️ [API Backend](https://sleek-pen-production-f98d.up.railway.app/)
 - 💻 [Frontend]()
-- 🎨 [Diseño]()
+- 🎨 [Diseño](https://www.figma.com/file/Fm24elMTT6QnjC0rcKxbv5/Proyecto-No-Country-to-the-Moon?node-id=0-1&t=X3xVBcyZw03LdC98-0)
 
 
 ## 🧑‍🤝‍🧑 Integrantes
