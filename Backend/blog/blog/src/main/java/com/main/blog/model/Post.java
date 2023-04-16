@@ -32,7 +32,7 @@ public class Post {
     @Column(name = "date", nullable = false)
     private Date date;
 
-    @OneToMany
+    @OneToMany(fetch = FetchType.EAGER)
     @Cascade({org.hibernate.annotations.CascadeType.ALL, org.hibernate.annotations.CascadeType.DELETE_ORPHAN})
     @JoinColumn(name = "post_id", referencedColumnName = "id")
     private List<Image> images;
