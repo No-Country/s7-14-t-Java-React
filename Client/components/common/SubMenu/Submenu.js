@@ -3,6 +3,8 @@ import { useCycle } from 'framer-motion'
 import { MenuButton } from './MenuButton'
 import { HiddenMenu } from './HiddenMenu'
 import { motion } from 'framer-motion'
+import Image from 'next/image'
+import Logo from '@/public/images/Logo-2.png'
 
 export const Submenu = () => {
   const [open, cycleOpen] = useCycle(false, true)
@@ -20,7 +22,8 @@ export const Submenu = () => {
         className="categories"
         onClick={cycleOpen}
       >
-        <MenuButton isOpen={open} />
+        <Image src={Logo} alt="logo" className='img'/>
+        <MenuButton  isOpen={open} className="but" />
         <p>PubliShare</p>
       </motion.div>
 
@@ -31,19 +34,18 @@ export const Submenu = () => {
 
 const Container = styled(motion.div)`
   width: 100%;
-  background-color: var(--backgroundNav);
-  color: var(--gray3);
   height: 5rem;
+  background-color: var(--backgroundNav);
   display: flex;
   align-items: center;
   position: relative;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   justify-content: space-between;
   .categories {
-    padding: 0rem 4rem;
+    padding: 0rem 1rem;
     user-select: none;
     display: flex;
-    gap: 10px;
+    gap: 1rem;
     cursor: pointer;
     align-items: center;
     height: 100%;
@@ -54,5 +56,20 @@ const Container = styled(motion.div)`
       color: #FFFFFF;
     }
   }
+  
+  @media (max-width: 600px){
+    .img{
+      display: none;
+    }
+  }
+
+  @media (min-width: 600px) {
+  .but{
+    display: none;
+    position: relative;
+    left: 30px;
+  }
+  
+}
 `
 
