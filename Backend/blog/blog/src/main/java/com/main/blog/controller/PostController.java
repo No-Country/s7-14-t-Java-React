@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.*;
 
 @Controller
 @RequestMapping("/posts")
+@CrossOrigin("*")
 public class PostController {
     @Autowired
     private Mapper mapper;

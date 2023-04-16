@@ -19,7 +19,7 @@ public class Image {
     @Column(name = "name")
     private String name;
 
-    @Column(name = "dataImage", nullable = false)
+    @Lob
     private String dataImage;
 
 }
