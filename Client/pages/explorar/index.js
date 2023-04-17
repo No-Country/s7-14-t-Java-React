@@ -31,62 +31,62 @@ const categoryData = [
     {
         icon: KitchenIcon,
         name: 'Cocina',
-        slug: 'cocina'
+        slug: '1'
     },
     {
         icon: JoystickIcon,
         name: 'Videojuegos',
-        slug: 'videojuegos'
+        slug: '2'
     },
     {
         icon: TravelIcon,
         name: 'Viajes',
-        slug: 'viajes'
+        slug: '3'
     },
     {
         icon: SportsIcon,
         name: 'Deportes',
-        slug: 'deportes'
+        slug: '4'
     },
     {
         icon: BusinessIcon,
         name: 'Negocios',
-        slug: 'negocios'
+        slug: '5'
     },
     {
         icon: PoliticsIcon,
         name: 'Política',
-        slug: 'politica'
+        slug: '6'
     },
     {
         icon: TvIcon,
         name: 'Televisión',
-        slug: 'television'
+        slug: '7'
     },
     {
         icon: MovieIcon,
         name: 'Cine',
-        slug: 'cine'
+        slug: '8'
     },
     {
         icon: FitnessIcon,
         name: 'Fitness',
-        slug: 'fitness'
+        slug: '9'
     },
     {
         icon: FashionIcon,
         name: 'Moda',
-        slug: 'moda'
+        slug: '10'
     },
     {
         icon: MusicIcon,
         name: 'Música',
-        slug: 'musica'
+        slug: '11'
     },
     {
         icon: CelebritiesIcon,
         name: 'Celebridades',
-        slug: 'celebridades'
+        slug: '12'
     },
 ]
 

@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import Image from 'next/image'
+import dateToNow from '@/utils/dateToNow'
 
 
 const Separator = styled.div`
@@ -41,7 +42,9 @@ const CommentParagraph = styled.p`
 
 `
 
-const Comment = () => {
+const Comment = ({commentData}) => {
+
+    console.log(commentData)
   return (
     <>
     <Separator />
@@ -53,12 +56,12 @@ const Comment = () => {
                     Mate Amargo
                 </ProfileName>
                 <CommentDate>
-                    Hace 3 horas
+                    {dateToNow(commentData.date)}
                 </CommentDate>
             </ProfileTitleCommentContainer>
         </ProfileCommentContainer>
         <CommentParagraph>
-            Me encanta, lo he probado varias veces y siempre tengo ganas de repetir! Gracias por la receta. 😋👌
+           {commentData.content}
         </CommentParagraph>
     </CommentContainer>
     </>
