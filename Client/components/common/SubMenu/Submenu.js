@@ -23,7 +23,9 @@ export const Submenu = () => {
         className="categories"
         onClick={cycleOpen}
       >
-        <Image src={Logo} alt="logo" className='img'/>
+      <Link href="/">
+	<Image src={Logo} alt="logo" height="50" width="50" className='img'/>
+      </Link>
         <MenuButton  isOpen={open} className="but" />
         <p>PubliShare</p>
     </motion.div>
