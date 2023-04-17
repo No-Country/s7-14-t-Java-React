@@ -2,6 +2,8 @@ import styled from 'styled-components'
 import { useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
 import * as yup from 'yup'
+import { useContext } from 'react'
+import { GlobalContext } from '@/context/GlobalContext'
 
 import { Input } from '../common/Input'
 import { Button } from '../common/Button'
@@ -24,32 +26,53 @@ const schema = yup.object().shape({
   name: yup.string().required('Campo requerido'),
 })
 
-const postRegister = async (data) => {
-  const url = "https://sleek-pen-production-f98d.up.railway.app/auth/signUp"
-
-  try {
-    const res = await fetch(url, {
-      method:'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        "name": data.name,
-        "lastName": data.lastName,
-        "email": data.email,
-        "password": data.password,
-        "address": "string",
-        "phone": "12123"
-      })
-    })
-    const result = await res
-    return result
-  } catch (error) {
-    console.log(error)
-  }
-}
 
 export const RegisterContent = () => {
+
+  const { setToken, setUser, contextDataGlobal, setContextDataGlobal } = useContext(GlobalContext)
+
+  const postRegister = async (data) => {
+    const url = "https://sleek-pen-production-f98d.up.railway.app/auth/signUp"
+  
+    try {
+      const res = await fetch(url, {
+        method:'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          "name": data.name,
+          "lastName": data.lastName,
+          "email": data.email,
+          "password": data.password,
+          "address": "string",
+          "phone": "12123"
+        })
+      })
+      const result = await res.json()
+      setToken(result.body.token)
+      setUser({
+        'avatar': result.body.avatar,
+        'email': result.body.email,
+        'id': result.body.id,
+        'lastName': result.body.lastName,
+        'name': result.body.name,
+        'token': result.body.token,
+      })
+
+      if (result.statusCode === 'OK') {
+        setContextDataGlobal({
+          ...contextDataGlobal,
+          modalActive: '',
+          showModal: false,
+        })
+      }
+      console.log(result)
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
   const {
     register,
     formState: { errors },
@@ -58,8 +81,8 @@ export const RegisterContent = () => {
   } = useForm({ resolver: yupResolver(schema) })
 
   const onSubmit = (data) => {
-    console.log(data)
     postRegister(data)
+
     reset()
 
   }
