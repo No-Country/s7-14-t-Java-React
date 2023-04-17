@@ -12,8 +12,6 @@ const categories = [
   { name: 'Perfil', to: '/perfil', id: 4 },
   { name: 'Ayuda', to: '/ayuda', id: 5 },
   { name: 'Cerrar sesión', to: '/peripherals', id: 6 },
-//  { name: 'Celulares', to: '/phones', id: 7 },
-//  { name: 'Conectividad', to: '/connectivity', id: 8 },
 ]
 
 const itemVariants = {
