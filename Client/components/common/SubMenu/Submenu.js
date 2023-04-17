@@ -5,6 +5,7 @@ import { HiddenMenu } from './HiddenMenu'
 import { motion } from 'framer-motion'
 import Link from 'next/link'
 import Image from 'next/image'
+import { SearchNav } from '../SearchNav'
 import Logo from '@/public/images/Logo-2.png'
 
 export const Submenu = () => {
@@ -18,8 +19,8 @@ export const Submenu = () => {
     >
       <motion.div
         initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.5, delay: 1.5 }}
+        animate={{ opacity: 1 }} 
+        transition={{ duration: 0.5, delay: 1.5 }} 
         className="categories"
         onClick={cycleOpen}
       >
@@ -29,6 +30,8 @@ export const Submenu = () => {
         <MenuButton  isOpen={open} className="but" />
         <p>PubliShare</p>
     </motion.div>
+         
+    <SearchNav />
     <div className='linkes'>
       <Link href="/" className='home'>
 	Home
