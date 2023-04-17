@@ -1,6 +1,5 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import styled from 'styled-components';
 
 export const MenuButton = ({
   isOpen = false,
@@ -54,7 +53,6 @@ export const MenuButton = ({
   const unitWidth = (unitHeight * width) / height
   return (
     <>
-    <Container>
     <motion.svg
       viewBox={`0 0 ${unitWidth} ${unitHeight}`}
       overflow="visible"
@@ -89,15 +87,6 @@ export const MenuButton = ({
         {...lineProps}
       />
     </motion.svg>
-    </Container>
     </>
   )
 }
-
-const Container = styled.div`
-@media (max-width: 600px){
-  .div{
-    display: flex;
-  }
-}
-`
