@@ -88,7 +88,7 @@ const ImageLabel = styled.label`
   background: #FFFFFF;
   border: 0;
   padding: 8px 16px;
-  justfy-content: center;
+  justify-content: center;
   position: relative;
 `
 
