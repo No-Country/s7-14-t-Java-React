@@ -77,7 +77,7 @@
     </tr>
     <tr>
         <td>
-            <img src="" width="96px" />
+            <img src="https://avatars.githubusercontent.com/u/126426353?v=4" width="96px" />
         </td>
         <td>
             <p>Daniela Gil</p>
