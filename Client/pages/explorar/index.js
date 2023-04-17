@@ -92,7 +92,7 @@ const categoryData = [
 
 const Container = styled.main`
     width: 90%;
-    margin-top: 170px;
+    margin-top: 20px;
     min-height: 100vh;
 `
 const Title = styled.h3`
@@ -103,7 +103,7 @@ const Title = styled.h3`
     display: flex;
     align-items: center;
     letter-spacing: -0.015em;
-    margin-top: 32px;
+    margin-top: 20px;
 `
 const CategoryContainer = styled.section`
     width: 100%;

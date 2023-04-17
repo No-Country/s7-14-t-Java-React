@@ -23,13 +23,16 @@ public class Post {
     @Column(name = "id", nullable = false)
     private Long id;
 
+    @Column(name = "title")
+    private String title;
+
     @Column(name = "text")
     private String text;
 
     @Column(name = "date", nullable = false)
     private Date date;
 
-    @OneToMany
+    @OneToMany(fetch = FetchType.EAGER)
     @Cascade({org.hibernate.annotations.CascadeType.ALL, org.hibernate.annotations.CascadeType.DELETE_ORPHAN})
     @JoinColumn(name = "post_id", referencedColumnName = "id")
     private List<Image> images;

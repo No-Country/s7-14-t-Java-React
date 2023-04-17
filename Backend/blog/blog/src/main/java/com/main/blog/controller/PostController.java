@@ -10,10 +10,12 @@ import org.apache.coyote.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
 @Controller
 @RequestMapping("/posts")
+@CrossOrigin("*")
 public class PostController {
     @Autowired
     private Mapper mapper;
@@ -21,16 +23,17 @@ public class PostController {
     @Autowired
     private IPostService iPostService;
 
+    @Transactional(readOnly=true)
     @GetMapping("user/{userId}")
     public ResponseEntity<?> getUserPosts(@PathVariable Long userId) {
         return iPostService.getUserPosts(userId);
     }
-
+    @Transactional(readOnly=true)
     @GetMapping("/{id}")
     public ResponseEntity<?> getPost(@PathVariable Long id) {
         return iPostService.getPostById(id);
     }
-
+    @Transactional(readOnly=true)
     @GetMapping("/")
     public ResponseEntity<?> getAllPosts() {
         return iPostService.getAllPosts();

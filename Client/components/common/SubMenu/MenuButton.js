@@ -6,7 +6,7 @@ export const MenuButton = ({
   width = 15,
   height = 15,
   strokeWidth = 4,
-  color = '#9F9F9F',
+  color = '#FFFFFF',
   transition = null,
   lineProps = null,
   ...props
@@ -52,6 +52,7 @@ export const MenuButton = ({
   const unitHeight = 4
   const unitWidth = (unitHeight * width) / height
   return (
+    <>
     <motion.svg
       viewBox={`0 0 ${unitWidth} ${unitHeight}`}
       overflow="visible"
@@ -86,5 +87,6 @@ export const MenuButton = ({
         {...lineProps}
       />
     </motion.svg>
+    </>
   )
 }

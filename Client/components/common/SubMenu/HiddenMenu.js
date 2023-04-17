@@ -12,8 +12,6 @@ const categories = [
   { name: 'Perfil', to: '/perfil', id: 4 },
   { name: 'Ayuda', to: '/ayuda', id: 5 },
   { name: 'Cerrar sesión', to: '/peripherals', id: 6 },
-//  { name: 'Celulares', to: '/phones', id: 7 },
-//  { name: 'Conectividad', to: '/connectivity', id: 8 },
 ]
 
 const itemVariants = {
@@ -97,19 +95,21 @@ export const HiddenMenu = ({ open, action }) => {
 }
 
 const Menu = styled(motion.aside)`
+  @media (max-width: 600px){
   position: fixed;
   backdrop-filter: blur(2px);
   height: 400px;
   filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.3));
-  background-color: #000000cf;
-  color: var(--primaryGreen1);
-  top: 14rem;
+  background-color: var(--backgroundNav);
+  color: FFFFFF;
+  top: 5rem;
   left: 0;
   z-index: 10;
   span {
     width: 100%;
     height: 1px;
     background-color: var(--mainBg);
+  }
   }
 `
 const ContainerItems = styled(motion.div)`

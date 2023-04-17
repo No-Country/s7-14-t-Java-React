@@ -20,7 +20,7 @@ const StyledForm = styled.form`
   flex-direction: column;
   width: 90%;
   height: 600px;
-  margin-top: 200px;
+  margin-top: 20px;
   gap: 16px;
 `
 const TitleInput = styled.input`

@@ -10,7 +10,7 @@ const Card = styled.section`
     border-radius: 8px;
     background: #FFFFFF;
     box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.25);
-    margin-top: 210px;
+    margin-top: 20px;
     padding: 8px;
 `
 const ProfileImage = styled(Image)`

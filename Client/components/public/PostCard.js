@@ -7,6 +7,7 @@ import capitalizarPrimeraLetra from '@/utils/capitalizarPrimeraLeta'
 import dateToNow from '@/utils/dateToNow'
 
 const Card = styled(Link)`
+    margin-top: 20px;
     width: 90%;
     height: 400px;
     border-radius: 8px;
