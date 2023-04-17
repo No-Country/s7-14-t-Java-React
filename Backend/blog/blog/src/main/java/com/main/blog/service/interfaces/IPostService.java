@@ -22,4 +22,5 @@ public interface IPostService {
     ResponseEntity<?> likePost(Long id, String token);
 
     ResponseEntity<?> getUserPosts(Long userId);
+
 }
