@@ -47,7 +47,7 @@ public class PostService implements IPostService {
 
     @Override
     public ResponseEntity<?> getUserPosts(Long userId) {
-        Set<Post> posts = iPostRepository.findByUserId(userId);
+        List<Post> posts = iPostRepository.findByUserId(userId);
         return ResponseEntity.status(HttpStatus.ACCEPTED).body(posts.stream().map(post -> mapper.getMapper().map(post, ResponsePostDto.class)));
     }
 

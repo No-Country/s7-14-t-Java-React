@@ -3,6 +3,7 @@ import { useCycle } from 'framer-motion'
 import { MenuButton } from './MenuButton'
 import { HiddenMenu } from './HiddenMenu'
 import { motion } from 'framer-motion'
+import Link from 'next/link'
 import Image from 'next/image'
 import Logo from '@/public/images/Logo-2.png'
 
@@ -25,8 +26,21 @@ export const Submenu = () => {
         <Image src={Logo} alt="logo" className='img'/>
         <MenuButton  isOpen={open} className="but" />
         <p>PubliShare</p>
-      </motion.div>
-
+    </motion.div>
+    <div className='linkes'>
+      <Link href="/" className='home'>
+	Home
+      </Link>
+      <Link href="/explorar">
+	Explorar
+      </Link>
+      <Link href="/publicar">
+	Publicar
+      </Link>
+      <Link href="/perfil">
+	Perfil
+      </Link>
+    </div>
       <HiddenMenu open={open} action={cycleOpen} />
     </Container>
   )
@@ -34,7 +48,6 @@ export const Submenu = () => {
 
 const Container = styled(motion.div)`
   width: 100%;
-  height: 5rem;
   background-color: var(--backgroundNav);
   display: flex;
   align-items: center;
@@ -60,16 +73,28 @@ const Container = styled(motion.div)`
   @media (max-width: 600px){
     .img{
       display: none;
-    }
+    } 
   }
 
   @media (min-width: 600px) {
   .but{
     display: none;
     position: relative;
-    left: 30px;
+    left: 40px;
+    }
   }
-  
-}
-`
-
+    .linkes{
+      display: flex;
+      gap: 20px;
+      padding: 20px;
+      color: #FFFFFF;
+      margin: 5px;
+    }
+  @media (max-width: 600px){ 
+    .linkes a{
+      display: none;
+      padding: 5px;
+    }
+  }
+` 
+ 

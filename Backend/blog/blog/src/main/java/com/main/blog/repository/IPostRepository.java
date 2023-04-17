@@ -16,5 +16,5 @@ import java.util.Set;
 public interface IPostRepository extends JpaRepository<Post, Long> {
     List<Post> findByCategoryId(Long categoryId);
 
-    Set<Post> findByUserId(Long userId);
+    List<Post> findByUserId(Long userId);
 }
