@@ -12,4 +12,6 @@ public interface ICommentService {
     ResponseEntity<Set<CommentDto>> getAllByPostId(Long postId);
 
     ResponseEntity<?> delete(Long commentId) throws ResourceNotFoundException;
+
+    ResponseEntity<?> getByUserComments(Long userId);
 }

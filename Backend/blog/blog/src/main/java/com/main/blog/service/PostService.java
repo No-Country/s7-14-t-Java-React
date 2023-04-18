@@ -9,8 +9,8 @@ import com.main.blog.util.Mapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
-import org.springframework.util.CollectionUtils;
 
 import java.util.*;
 import java.util.function.Predicate;
@@ -32,6 +32,7 @@ public class PostService implements IPostService {
 
     @Autowired
     private IUserRepository iUserRepository;
+
 
     @Autowired
     private Mapper mapper;
@@ -133,17 +134,24 @@ public class PostService implements IPostService {
             } else {
                 post.getLikes().add(user);
             }
-            return ResponseEntity.status(HttpStatus.ACCEPTED).body(mapper.getMapper().map(iPostRepository.save(post), ResponsePostDto.class));
+            ResponsePostDto responsePostDto = mapper.getMapper().map(iPostRepository.save(post), ResponsePostDto.class);
+            responsePostDto.setCountLikes((long) post.getLikes().size());
+            return ResponseEntity.status(HttpStatus.ACCEPTED).body(responsePostDto);
         } catch (ResourceNotFoundException e) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
         }
     }
 
+//    @Override
+//    public ResponseEntity<?> getLikes(Long postId) {
+//        return ResponseEntity.status(HttpStatus.ACCEPTED).body(iLikeRepository.countByPost_Id(postId));
+//    }
+
 
     public List<Hashtag> checkHashtag(List<Hashtag> hashtags) {
         List<Hashtag> dbHashtags = new ArrayList<>((hashtags.stream().map(hashtag -> iHashtagRepository.findByName(hashtag.getName())).toList()));
         dbHashtags.removeIf(Objects::isNull);
-        if (dbHashtags.isEmpty() || dbHashtags.get(0) == null) {
+        if (dbHashtags.isEmpty()) {
             return iHashtagRepository.saveAll(hashtags);
         } else {
             Predicate<Hashtag> nameFilter = hashtag -> dbHashtags.stream()
