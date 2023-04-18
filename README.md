@@ -42,7 +42,7 @@
 
 - ⚙️ [API Backend](https://sleek-pen-production-f98d.up.railway.app/)
 - 💻 [Frontend]()
-- 🎨 [Diseño]()
+- 🎨 [Diseño](https://www.figma.com/file/Fm24elMTT6QnjC0rcKxbv5/Proyecto-No-Country-to-the-Moon?node-id=0-1&t=X3xVBcyZw03LdC98-0)
 
 
 ## 🧑‍🤝‍🧑 Integrantes
@@ -77,7 +77,7 @@
     </tr>
     <tr>
         <td>
-            <img src="" width="96px" />
+            <img src="https://avatars.githubusercontent.com/u/126426353?v=4" width="96px" />
         </td>
         <td>
             <p>Daniela Gil</p>
@@ -86,7 +86,7 @@
     </tr>
     <tr>
         <td>
-            <img src="" width="96px" />
+            <img src="https://avatars.githubusercontent.com/u/75190112?v=4" width="96px" />
         </td>
         <td>
             <p>Nicolle Rosa Andujar</p>
