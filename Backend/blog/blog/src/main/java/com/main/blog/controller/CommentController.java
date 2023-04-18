@@ -36,4 +36,9 @@ public class CommentController {
     public ResponseEntity<?> deleteById(@PathVariable Long id) {
         return commentService.delete(id);
     }
+
+    @GetMapping("/user/{userId}")
+    public ResponseEntity<?> getUserComments(@PathVariable Long userId) {
+        return commentService.getByUserComments(userId);
+    }
 }

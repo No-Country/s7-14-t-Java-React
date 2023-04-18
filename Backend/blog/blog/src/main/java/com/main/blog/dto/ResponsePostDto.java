@@ -25,5 +25,5 @@ public class ResponsePostDto {
 
     private ResponseUserDto user;
 
-    private Set<ResponseUserDto> likes;
+    private Long countLikes;
 }

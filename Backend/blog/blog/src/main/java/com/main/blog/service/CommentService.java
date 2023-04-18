@@ -74,4 +74,9 @@ public class CommentService implements ICommentService {
     }
 
 
+    @Override
+    public ResponseEntity<?> getByUserComments(Long userId) {
+        Set<Comment> comments = iCommentRepository.findByUser_Id(userId);
+        return ResponseEntity.status(HttpStatus.ACCEPTED).body(comments.stream().map(comment -> mapper.getMapper().map(comment, CommentDto.class)));
+    }
 }

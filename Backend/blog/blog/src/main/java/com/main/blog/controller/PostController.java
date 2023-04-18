@@ -2,7 +2,6 @@ package com.main.blog.controller;
 
 import com.main.blog.dto.PatchPostDto;
 import com.main.blog.dto.RequestPostDto;
-import com.main.blog.dto.UserIdDto;
 import com.main.blog.service.interfaces.IPostService;
 
 import com.main.blog.util.Mapper;
