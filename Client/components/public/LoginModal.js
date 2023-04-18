@@ -22,40 +22,53 @@ const schema = yup.object().shape({
   password: yup.string().required('La contraseña es requerida'),
 })
 
-const postLogin = async (data) => {
-  const url = "https://sleek-pen-production-f98d.up.railway.app/auth/signIn"
 
-  try {
-    const res = await fetch(url, {
-      method:'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        "email": data.email,
-        "password": data.password,
-      })
-    })
-    const result = await res.json()
-    return console.log(result)
-  } catch (error) {
-    console.log(error)
-  }
-}
 
 export const LoginModal = () => {
   const [visible, setVisible] = useState(false)
+  const { contextDataGlobal, setContextDataGlobal, setToken, setUser } = useContext(GlobalContext)
+
+
+  const postLogin = async (data) => {
+    const url = "https://sleek-pen-production-f98d.up.railway.app/auth/signIn"
+  
+    try {
+      const res = await fetch(url, {
+        method:'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          "email": data.email,
+          "password": data.password,
+        })
+      })
+      const result = await res.json()
+      setUser({
+        'avatar': result.avatar,
+        'email': result.email,
+        'id': result.id,
+        'lastName': result.lastName,
+        'name': result.name,
+        'token': result.token,
+      })
+      setToken(result.token)
+      console.log(result)
+    } catch (error) {
+      console.log(error)
+    }
+  }
   const {
     register,
     formState: { errors },
     handleSubmit,
-    reset,
+    reset, 
   } = useForm({ resolver: yupResolver(schema) })
-  const { contextDataGlobal, setContextDataGlobal } = useContext(GlobalContext)
+  
 
   const onSubmit = (data) => {
-    reset()
     postLogin(data)
+    reset()
     setContextDataGlobal({
       ...contextDataGlobal,
       modalActive: '',

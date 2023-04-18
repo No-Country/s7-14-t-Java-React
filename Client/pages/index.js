@@ -1,9 +1,23 @@
+import React, {useState, useEffect} from 'react';
 import Head from 'next/head';
 import { motion } from 'framer-motion';
 import PostsContainer from '@/components/public/PostsContainer';
+import { postsFetch, postsUrl } from '@/services/postsFetch';
 
 export default function Home() {
-  return (
+
+  const [posts, setPosts] = useState(null)
+
+  const getPosts = async () => {
+    const res= await fetch(postsUrl).then(res=>res.json())
+    setPosts(res)
+  }
+
+  useEffect(()=>{
+    getPosts()
+  }, [])
+
+   return (
     <>
       <Head>
         <title>PubliShare</title>
@@ -18,8 +32,8 @@ export default function Home() {
         key="home"
         style={{ width: '100%' }}
       >
-      <PostsContainer />
       </motion.div>
+      <PostsContainer posts={posts}/>
     </>
   )
 }

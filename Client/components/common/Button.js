@@ -27,7 +27,8 @@ export const Button = ({
       ) : (
         <Btn
           whileHover={{
-            backgroundColor: '#302544',
+            backgroundColor: '#cdc3de',
+
             transition: { duration: 0.3 },
           }}
           whileTap={{
@@ -59,8 +60,8 @@ const Btn = styled(motion.button)`
   font-family: 'Prompt';
   font-style: normal;
   font-weight: 500;
-  font-size: 13px;
-  line-height: 16px;
+  font-size: 12px;
+  line-height: 14px;
   text-align: center;
   letter-spacing: 0.02em;
   color: #fff;

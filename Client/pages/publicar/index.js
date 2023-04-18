@@ -1,10 +1,11 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 import dynamic from 'next/dynamic'
 const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
 import 'node_modules/react-quill/dist/quill.snow.css'
 import styled from 'styled-components'
 import HashtagIcon from '@/public/icons/HashtagIcon';
 import ImgIcon from '@/public/icons/ImgIcon';
+import { GlobalContext } from '@/context/GlobalContext';
 
 
 
@@ -88,7 +89,6 @@ const ImageLabel = styled.label`
   background: #FFFFFF;
   border: 0;
   padding: 8px 16px;
-  justify-content: center;
   position: relative;
 `
 
@@ -125,6 +125,7 @@ const PostButton = styled.button`
   border: 0;
   color: #FFFFFF;
   align-self: end;
+  cursor: pointer;
 `
 const ImgIcon2 = styled(ImgIcon)`
   opacity: 0.5;
@@ -137,6 +138,17 @@ const HashtagIcon2 = styled(HashtagIcon)`
   top: 14px;
   left: 20px;
 `
+const toBase64 = file => new Promise((resolve, reject) => {
+  if (!!file) {
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onload = () => resolve(reader.result);
+    reader.onerror = error => reject(error);
+  } else {
+    return
+  }
+});
+
 
 const index = () => {
 
@@ -146,24 +158,56 @@ const index = () => {
   const [hashtag, setHashtag] = useState('')
   const [image, setImage] = useState('')
 
+  const {token} = useContext(GlobalContext)
+
+  const postPost = async (data) => {
+    
+    const url = 'https://sleek-pen-production-f98d.up.railway.app/posts/'
+    const postToken = `Bearer ${token}`
+  
+    try {
+      const image = data.image ? await toBase64(data.image) : ''
+      console.log(image)
+      const res = await fetch(url, {
+        method:'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': postToken,
+        },
+        body: JSON.stringify({
+          'text': data.postInfo,
+          'title': data.title,
+          'images': [{
+            'name': 'foto',
+            'dataImage': image
+          }],
+          'hashtag': data.hashtag,
+          'category': {
+            'name': data.category
+          },
+        })
+      })
+      const result = await res.json()
+      console.log(result)
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
   const handleSubmit = (e) => {
     e.preventDefault();
-
-    // const form = e.target;
-    // const formData = new FormData(form);
-    // const formJson = Object.fromEntries(formData.entries())
-    // console.log(formJson)
-
     const form = {
       'title': postTitle,
       'category': selectedCategory,
       'postInfo': quillText,
-      'hashtag': hashtag,
+      'hashtag': hashtag.split(' ').map((e)=> {
+        return {'name' : e}
+      }),
       'image': image,     
     }
-
-
     console.log(form)
+    postPost(form)
+    
   }
 
   return (
@@ -172,18 +216,18 @@ const index = () => {
         <TitleInput type='text' placeholder='Añade un titulo' value={postTitle} onChange={(e) => setPostTitle(e.target.value)}/>
         <CategoryInput value={selectedCategory} onChange={(e) => setSelectedCategory(e.target.value)}>
           <option value="" hidden>Selecciona una categoría</option>
-          <option value="cocina" >Cocina</option>
-          <option value="videojuegos" >Videojuegos</option>
-          <option value="viajes" >Viajes</option>
-          <option value="deportes" >Deportes</option>
-          <option value="negocios" >Negocios</option>
-          <option value="politica" >Política</option>
-          <option value="television" >Televisión</option>
-          <option value="cine" >Cine</option>
-          <option value="fitness" >Fitness</option>
-          <option value="moda" >Moda</option>
-          <option value="musica" >Música</option>
-          <option value="celebridades" >Celebridades</option>
+          <option value="Cocina" >Cocina</option>
+          <option value="Videojuegos" >Videojuegos</option>
+          <option value="Viajes" >Viajes</option>
+          <option value="Deportes" >Deportes</option>
+          <option value="Negocios" >Negocios</option>
+          <option value="Politica" >Política</option>
+          <option value="Televisión" >Televisión</option>
+          <option value="Cine" >Cine</option>
+          <option value="Fitness" >Fitness</option>
+          <option value="Moda" >Moda</option>
+          <option value="Música" >Música</option>
+          <option value="Celebridades" >Celebridades</option>
         </CategoryInput>
 
         <Quill theme="snow" value={quillText} onChange={(e) => setQuillText(e)} placeholder='Introduce tu texto aquí...'/>

@@ -3,6 +3,8 @@ import styled from 'styled-components'
 import Image from 'next/image'
 import Comment from './Comment'
 import AddComment from './AddComment'
+import { useComments } from '@/hooks/useComments'
+import { postsFetch } from '@/services/postsFetch'
 
 
 const Card = styled.article`
@@ -37,18 +39,24 @@ const Separator = styled.div`
 `
 
 
-const PostComments = () => {
+const PostComments = ({postId}) => {
+
+    const { comment, isLoading, isError } = useComments(postId, postsFetch)
+
+    console.log(comment)
   return (
     <Card>
         <LikeCommentContainer>
             <Image src="/../public/icons/comment-icon.png" width={18} height={18} alt='comment-icon'/>
             <LikeCommentCount>
-                27
+                {comment ? comment.length : 0}
             </LikeCommentCount>
         </LikeCommentContainer>
         <Separator />
-        <AddComment />
-        <Comment />
+        <AddComment postId={postId}/>
+        {comment && comment.map((e) => {
+            return <Comment commentData={e} key={e.id}/>
+        })}        
     </Card>
   )
 }
