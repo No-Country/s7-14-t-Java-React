@@ -6,6 +6,7 @@ import { motion } from 'framer-motion'
 import Link from 'next/link'
 import Image from 'next/image'
 import { Button } from '../Button'
+import { LoginModal } from '@/components/public/LoginModal'
 import { SearchNav } from '../SearchNav'
 import Logo from '@/public/images/Logo-2.png'
 
@@ -34,7 +35,7 @@ export const Submenu = () => {
          
     <SearchNav />
     <div className='linkes'>
-      <Link href="/" className='home'>
+      <Link href="/">
 	Home
       </Link>
       <Link href="/explorar">
@@ -47,7 +48,7 @@ export const Submenu = () => {
 	Perfil
       </Link>
       <Link href="/ingresar">
-	<Button />
+	Ingresar
       </Link>
 
     </div>
