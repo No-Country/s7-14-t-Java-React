@@ -27,7 +27,8 @@ export const Button = ({
       ) : (
         <Btn
           whileHover={{
-            backgroundColor: '#302544',
+            backgroundColor: '#cdc3de',
+
             transition: { duration: 0.3 },
           }}
           whileTap={{

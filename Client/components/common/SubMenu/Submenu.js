@@ -5,6 +5,7 @@ import { HiddenMenu } from './HiddenMenu'
 import { motion } from 'framer-motion'
 import Link from 'next/link'
 import Image from 'next/image'
+import { Button } from '../Button'
 import { SearchNav } from '../SearchNav'
 import Logo from '@/public/images/Logo-2.png'
 
@@ -45,6 +46,10 @@ export const Submenu = () => {
       <Link href="/perfil">
 	Perfil
       </Link>
+      <Link href="/ingresar">
+	<Button />
+      </Link>
+
     </div>
       <HiddenMenu open={open} action={cycleOpen} />
     </Container>
