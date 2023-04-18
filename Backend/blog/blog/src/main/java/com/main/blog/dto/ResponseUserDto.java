@@ -1,7 +1,6 @@
 package com.main.blog.dto;
 
 import com.main.blog.model.enums.UserStatus;
-import jakarta.persistence.Column;
 import lombok.Data;
 
 @Data

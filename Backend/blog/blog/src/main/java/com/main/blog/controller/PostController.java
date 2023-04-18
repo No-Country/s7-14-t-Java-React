@@ -2,7 +2,6 @@ package com.main.blog.controller;
 
 import com.main.blog.dto.PatchPostDto;
 import com.main.blog.dto.RequestPostDto;
-import com.main.blog.dto.UserIdDto;
 import com.main.blog.service.interfaces.IPostService;
 
 import com.main.blog.util.Mapper;
@@ -28,7 +27,7 @@ public class PostController {
     public ResponseEntity<?> getUserPosts(@PathVariable Long userId) {
         return iPostService.getUserPosts(userId);
     }
-    @Transactional(readOnly=true)
+//    @Transactional(readOnly=true)
     @GetMapping("/{id}")
     public ResponseEntity<?> getPost(@PathVariable Long id) {
         return iPostService.getPostById(id);
