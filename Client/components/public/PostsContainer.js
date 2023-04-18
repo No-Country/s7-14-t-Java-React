@@ -1,11 +1,16 @@
-import React from 'react'
+import React, {useEffect, useState} from 'react'
 import styled from 'styled-components'
 import PostCard from './PostCard'
 
 const Container = styled.section`
+  margin-top: 200px;
+  display: flex;
+  flex-direction: column;
   width: 100%;
   display: flex;
   justify-content: center;
+  align-items: center;
+  gap: 16px;
 `
 
 const posts = {
@@ -19,10 +24,15 @@ const posts = {
   comments: "534"
 }
 
-const PostsContainer = () => {
+const PostsContainer = ({posts}) => { 
+
+
+  
   return (
     <Container>
-      <PostCard posts={posts}/>
+      {posts && posts.map((e) => {
+          return <PostCard posts={e} key={e.id}/>
+        })}
     </Container>
   )
 }

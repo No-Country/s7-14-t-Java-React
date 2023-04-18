@@ -1,7 +1,9 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import Image from 'next/image'
 import styled from 'styled-components'
 import SendIcon from '@/public/icons/SendIcon'
+import { ContextType } from 'react'
+import { GlobalContext } from '@/context/GlobalContext'
 
 const AddCommentContainer = styled.div`
     display: flex;
@@ -32,17 +34,43 @@ const PostSendIcon = styled(SendIcon)`
     opacity: 0.5;
 `
 
-const AddComment = () => {
+const AddComment = ({postId}) => {
+
+    const {token} = useContext(GlobalContext)
 
     const [commentText, setCommentText] = useState("")
+
+    const postComment = async () => {
+        const commentToken = `Bearer ${token}`
+        const url = `https://sleek-pen-production-f98d.up.railway.app/comments/new/${postId}`
+        try {
+            const res = await fetch(url, {
+                method:'POST',
+                headers: {
+                  'Content-Type': 'application/json',
+                  'Authorization': commentToken,
+                },
+                body: JSON.stringify({
+                  "content": commentText,
+                })
+              })
+
+            const result = await res.json()
+            console.log(result)
+        } catch (error) {
+            console.error(error)
+        }
+    }
     
     const handleComment = (event) => {
         setCommentText(event.target.value)
     }
 
     const handleSubmit = () => {
-        console.log(commentText)
+        postComment()
     }
+    
+
 
     return (
     <AddCommentContainer>

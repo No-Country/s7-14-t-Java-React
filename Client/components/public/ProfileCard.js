@@ -1,6 +1,8 @@
 import React from 'react'
 import styled from 'styled-components'
 import Image from 'next/image'
+import capitalizarPrimeraLetra from '@/utils/capitalizarPrimeraLeta'
+import dateToNow from '@/utils/dateToNow'
 
 const Card = styled.section`
     display: flex;
@@ -46,16 +48,16 @@ const FollowButton = styled.button`
 `
 
 
-const ProfileCard = () => {
+const ProfileCard = ({profileImg, name, lastName, date}) => {
   return (
     <Card>
-        <ProfileImage src="/../public/images/profile-image.png" width={40} height={40} alt='profile-pic'/>
+        <ProfileImage src={profileImg} width={40} height={40} alt='profile-pic'/>
         <ProfileTitleContainer>
             <ProfileTitle>
-                Agus Martínez
+                {capitalizarPrimeraLetra(name)} {capitalizarPrimeraLetra(lastName)}
             </ProfileTitle>
             <PostDate>
-                Hace 2 días
+                {dateToNow(date)}
             </PostDate>
         </ProfileTitleContainer>
         <FollowButton src="/../public/icons/favorite-icon.png" width={18} height={16} alt="follow-button">

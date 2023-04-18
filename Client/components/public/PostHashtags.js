@@ -27,13 +27,13 @@ const Hashtags = styled.div`
 `
 
 const PostHashtags = ({postHashtagsInfo}) => {
-    console.log(postHashtagsInfo)
+
   return (
     <Container>
         {postHashtagsInfo && postHashtagsInfo.map((e, i)=>{
             return (
-                <Hashtags key={`${i}-${e}`}>
-                    {e}
+                <Hashtags key={`${i}-${e.name}`}>
+                    #{e.name}
                 </Hashtags>
             )
 
