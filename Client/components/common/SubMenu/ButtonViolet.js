@@ -10,7 +10,7 @@ export const ButtonViolet = () => {
       transition={{ duration: 0.5, delay: 2 }}
     >
       <Link passHref href="#">
-        <p>Nuevo Post</p>
+        <p>Ingresar</p>
         <div className="gradient" />
       </Link>
     </Container>

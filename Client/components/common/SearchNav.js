@@ -1,6 +1,6 @@
-import styled from 'styled-components'
-import { motion } from 'framer-motion'
-import SearchIcon from '@/public/icons/Search'
+import styled from 'styled-components';
+import { motion } from 'framer-motion';
+import SearchIcon from '@/public/icons/Search';
 
 export const SearchNav = () => {
   return (
@@ -9,7 +9,7 @@ export const SearchNav = () => {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.5, delay: 0.5 }}
-        placeholder="Buscar en PubliShare"
+        placeholder="     Buscar en PubliShare"
       />
       <motion.div
         initial={{ opacity: 0 }}
@@ -31,7 +31,7 @@ const ContainerInput = styled.div`
   .icon-container {
     cursor: pointer;
     position: absolute;
-    right: 0.5rem;
+    left: -0.5rem;
     border-radius: 6px;
     height: 2rem;
     width: 50px;
