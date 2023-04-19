@@ -27,7 +27,7 @@ public class PostController {
     public ResponseEntity<?> getUserPosts(@PathVariable Long userId) {
         return iPostService.getUserPosts(userId);
     }
-//    @Transactional(readOnly=true)
+    @Transactional(readOnly=true)
     @GetMapping("/{id}")
     public ResponseEntity<?> getPost(@PathVariable Long id) {
         return iPostService.getPostById(id);
