@@ -16,15 +16,15 @@ import CelebritiesIcon from '@/public/icons/CelebritiesIcon'
 import BusinessIcon from '@/public/icons/BusinessIcon'
 import Link from 'next/link'
 
-const postHashtagsInfo = [
-    '#RecetasSaladas',
-    '#Guiso',
-    '#Lentejas',
-    '#Comida',
-    '#Asado',
-    '#Lentejas',
-    '#Comida',
-    '#Asado'
+const hashtagData = [
+    {name: 'RecetasSaladas'},
+    {name: 'Guiso'},
+    {name: 'Lentejas'},
+    {name: 'Comida'},
+    {name: 'Asado'},
+    {name: 'Lentejas'},
+    {name: 'Comida'},
+    {name:'Asado'}
 ]
 
 const categoryData = [
@@ -94,6 +94,10 @@ const Container = styled.main`
     width: 90%;
     margin-top: 20px;
     min-height: 100vh;
+    
+    @media (min-width: 768px) {
+        width: 70%;
+    }
 `
 const Title = styled.h3`
     font-style: normal;
@@ -146,7 +150,7 @@ const index = () => {
         <Title>
             Hashtags en tendencia
         </Title>
-        <PostHashtags postHashtagsInfo={postHashtagsInfo}/>
+        <PostHashtags hashtagData={hashtagData}/>
         <Title>
             Categorías
         </Title>

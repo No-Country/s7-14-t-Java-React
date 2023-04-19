@@ -1,13 +1,18 @@
-import React, {useState} from 'react'
+import React, {useState, useContext, useEffect} from 'react'
 import styled from 'styled-components'
 import ProfileImage from '../../public/images/profile-image.png'
 import Image from 'next/image'
 import PostsContainer from '@/components/public/PostsContainer'
+import { GlobalContext } from '@/context/GlobalContext'
+import { postsUrl } from '@/services/postsFetch'
 import UserComments from '@/components/public/UserComments'
 
 const Container = styled.section`
     width: 100%;
-    margin-top: 200px;
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 `
 const PerfilContainer = styled.article`
     display: flex;
@@ -16,6 +21,11 @@ const PerfilContainer = styled.article`
     width: 100%;
     height: 128px;
     background: #FFFFFF;
+    @media (min-width: 768px) {
+        width: 70%;
+        box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.25);
+        border-radius: 20px;
+    }
 
 `
 const PerfilHeader = styled.header`
@@ -54,7 +64,7 @@ const ProfileFooter = styled.footer`
 `
 const PerfilButton = styled.div`
     position: relative;
-    width: 164px;
+    width: 50%;
     height: 40px;
     font-style: normal;
     font-weight: 600;
@@ -79,6 +89,7 @@ const ActiveButton = styled.div`
     position: absolute;
     bottom: 0;
     display: ${props => props.isActive ? 'block' : 'none'};
+    
 `
 const index = () => {
     const [activePubs, setActivePubs] = useState(true)
@@ -96,19 +107,159 @@ const index = () => {
             setActiveComments(true)
             setActivePubs(false)
         }
-    }    
+    }
+
+    const posts = [
+        {
+          "id": 1,
+          "text": "hola",
+          "title": null,
+          "images": [
+            {
+              "name": "hola",
+              "dataImage": "hola"
+            }
+          ],
+          "date": "2023-04-17T06:09:55.124+00:00",
+          "hashtag": [
+            {
+              "name": "hola"
+            }
+          ],
+          "category": {
+            "id": 2,
+            "description": "Todas las ñañas que se refieran a los deportes van aca",
+            "name": "Videojuegos"
+          },
+          "user": {
+            "id": 21,
+            "name": "roberth",
+            "lastName": "lopez",
+            "email": "roberth@gmail.com",
+            "status": null,
+            "phone": "12123",
+            "avatar": "https://unavatar.io/roberth@gmail.com",
+            "token": null
+          }
+        },
+        {
+          "id": 2,
+          "text": "<p>asdqasdad</p><p>a<strong>sdasdasd</strong></p><ol><li><strong>asdasdasd</strong></li></ol><p><br></p><ul><li><strong>asdasdasd</strong></li></ul>",
+          "title": "roberth",
+          "images": [
+            {
+              "name": "foto",
+              "dataImage": ""
+            }
+          ],
+          "date": "2023-04-17T08:25:21.735+00:00",
+          "hashtag": [
+            {
+              "name": "hola"
+            }
+          ],
+          "category": {
+            "id": 2,
+            "description": "Todas las ñañas que se refieran a los deportes van aca",
+            "name": "Videojuegos"
+          },
+          "user": {
+            "id": 21,
+            "name": "roberth",
+            "lastName": "lopez",
+            "email": "roberth@gmail.com",
+            "status": null,
+            "phone": "12123",
+            "avatar": "https://unavatar.io/roberth@gmail.com",
+            "token": null
+          }
+        },
+        {
+          "id": 7,
+          "text": "<p>asdqasdad</p><p>a<strong>sdasdasd</strong></p><ol><li><strong>asdasdasd</strong></li></ol><p><br></p><ul><li><strong>asdasdasd</strong></li></ul><p><br></p><p><br></p><p><br></p><p><br></p>",
+          "title": "Post de musica",
+          "images": [
+            {
+              "name": "foto",
+              "dataImage": ""
+            }
+          ],
+          "date": "2023-04-17T08:31:33.224+00:00",
+          "hashtag": [
+            {
+              "name": "hola"
+            }
+          ],
+          "category": null,
+          "user": {
+            "id": 21,
+            "name": "roberth",
+            "lastName": "lopez",
+            "email": "roberth@gmail.com",
+            "status": null,
+            "phone": "12123",
+            "avatar": "https://unavatar.io/roberth@gmail.com",
+            "token": null
+          }
+        }
+      ]
+
+      const [userPosts, setUserPosts] = useState(null)
+      const [userComments, setUserComments] = useState(null)
+      const [userFollowers, setUserFollowers] = useState(null)
+
+      const { user } = useContext(GlobalContext)
+
+      const getUserPosts = async () => {
+        if (user.id) {
+            const res= await fetch(`${postsUrl}user/${user.id}`).then(res=>res.json())
+            setUserPosts(res)
+        }
+      }
+      const getUserComments = async () => {
+        if (user.id) {
+            const res= await fetch(`https://sleek-pen-production-f98d.up.railway.app/comments/user/${user.id}`)
+            .then(res=>res.json())
+            .catch(err => console.error(err))
+            setUserComments(res)
+        }
+      }
+
+      const getUserFollowers = async () => {
+        if (user.id) {
+            const res= await fetch(`https://sleek-pen-production-f98d.up.railway.app/followers/${user.id}`)
+            .then(res=>res.json())
+            .catch(err => console.error(err))
+            setUserFollowers(res)
+        }
+      }
+      useEffect(()=>{
+        getUserPosts()
+        getUserFollowers()
+        getUserComments()
+      }, [])
+
+      const handleFollowers = (data) => {
+        if(data) {
+            if (data === 1) {
+                return `${data} seguidor`
+            }else {
+                return `${data} seguidores`
+            }
+        }
+      }
 
   return (
     <Container>
         <PerfilContainer>
             <PerfilHeader>
-                <Image src={ProfileImage} alt='profilepic'/>
+                <Image src={user.avatar} alt='profilepic'/>
                 <ProfileNameFollowers>
                     <ProfileName>
-                        Claudy Pérez
+                        {user.name} {user.lastName}
                     </ProfileName>
                     <ProfileFollowers>
-                        823 seguidores
+                        {handleFollowers(userFollowers)} 
                     </ProfileFollowers>
                 </ProfileNameFollowers>
             </PerfilHeader>
@@ -124,7 +275,7 @@ const index = () => {
                 </ComentariosButton>
             </ProfileFooter>
         </PerfilContainer>
-        {activePubs ? <PostsContainer posts={'algo'}/> :  <UserComments />}
+        {activePubs ? <PostsContainer posts={userPosts} /> : <UserComments comments={userComments}/>}
         
     </Container>
   )

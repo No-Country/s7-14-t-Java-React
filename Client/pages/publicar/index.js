@@ -22,6 +22,10 @@ const StyledForm = styled.form`
   height: 600px;
   margin-top: 20px;
   gap: 16px;
+
+  @media (min-width: 768px) {
+        width: 70%;
+  }
 `
 const TitleInput = styled.input`
   box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.25);

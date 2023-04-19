@@ -5,17 +5,23 @@ import Link from 'next/link'
 import { Tags, TagsContainer } from '../common/Tags'
 import capitalizarPrimeraLetra from '@/utils/capitalizarPrimeraLeta'
 import dateToNow from '@/utils/dateToNow'
+import { useComments } from '@/hooks/useComments'
+import { postsFetch } from '@/services/postsFetch'
 
 const Card = styled(Link)`
     margin-top: 20px;
     width: 90%;
-    height: 400px;
+    max-height: 400px;
     border-radius: 8px;
     background: #FFFFFF;
     box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.25);
     display: flex;
     flex-direction: column;
     padding: 16px;
+
+    @media (min-width: 768px) {
+        width: 70%;
+    }
 `
 const Header = styled.header`
     display: flex;
@@ -33,10 +39,18 @@ const ProfileTitleContainer = styled.div`
 const ProfileTitle = styled.h3`
     font-size: 16px;
     font-weight: 800;
+    
+    @media (min-width: 768px) {
+        font-size: 20px;
+    }
 `
 const PostDate = styled.span`
     font-size: 12px;
     font-weight: 400;
+
+    @media (min-width: 768px) {
+        font-size: 14px;
+    }
 `
 const LikeIcon = styled(Image)`
     justify-self: end;
@@ -51,13 +65,21 @@ const Title = styled.h3`
     font-size: 20px;
     line-height: 24px;
     letter-spacing: 0.15px;
+
+    @media (min-width: 768px) {
+        font-size: 24px;
+    }
 `
 const Paragraph = styled.div`
     font-weight: 400;
     font-size: 14px;
     line-height: 24px;
     letter-spacing: 0.15px;
-    height: 100%;
+    min-height: 50px;
+    margin-bottom: 4px;
+    @media (min-width: 768px) {
+        font-size: 16px;
+    }
 `
 const Footer = styled.footer`
     display: flex;
@@ -81,9 +103,23 @@ const LikeCommentCount = styled.span`
     font-size: 12px;
     line-height: 24px;
     color: #5673BF;
+    @media (min-width: 768px) {
+        font-size: 14px;
+    }
 `
 
 const PostCard = ({posts}) => {
+
+    const countString = (str) => {
+        if (str.length > 366)  {
+            const extract = str.substring(0, 377)
+            return `${extract}...`
+        } else {
+            return str
+        }
+    }
+
+    const { comment, isLoading, isError } = useComments(posts.id, postsFetch)
 
   return (
     
@@ -110,21 +146,21 @@ const PostCard = ({posts}) => {
                 </Tags>
             </TagsContainer>
             {/* dangerouslySetInnerHTML={{__html: posts.text}} */}
-            <Paragraph dangerouslySetInnerHTML={{__html: posts.text}}>
+            <Paragraph dangerouslySetInnerHTML={{__html: countString(posts.text)}}>
             </Paragraph>
         </Content>        
         <Footer>
             <LikeCommentContainer>
                 <Image src="/../public/icons/like-icon.png" width={16.76} height={15.57} alt='like-icon'/>
                 <LikeCommentCount>
-                    123123
+                    {posts.countLikes ? posts.countLikes : 0}
                     {/* {posts.likes} */}
                 </LikeCommentCount>
             </LikeCommentContainer>
             <LikeCommentContainer>
                 <Image src="/../public/icons/comment-icon.png" width={18} height={18} alt='comment-icon'/>
                 <LikeCommentCount>
-                    1231244
+                    {comment ? comment.length : 0}
                     {/* {posts.comments} */}
                 </LikeCommentCount>
             </LikeCommentContainer>

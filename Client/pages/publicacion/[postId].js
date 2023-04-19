@@ -19,6 +19,9 @@ const postHashtagsInfo = [
 
 const Container = styled.main`
   width: 90%;
+  @media (min-width: 768px) {
+        width: 70%;
+  }
 `
 
 
@@ -33,8 +36,8 @@ const PostDetailContainer = () => {
         {post && (
           <>
             <ProfileCard profileImg={post.user.avatar} name={post.user.name} lastName={post.user.lastName} date={post.date}/>
-            <PostDetail title={post.title} category={post.category?.name} text={post.text}/>
-            <PostHashtags postHashtagsInfo={post.hashtag}/>
+            <PostDetail title={post.title} category={post.category?.name} text={post.text} likes={post.countLikes}/>
+            <PostHashtags hashtagData={post.hashtag}/>
             <PostComments postId={postId}/>
           </>
         )}

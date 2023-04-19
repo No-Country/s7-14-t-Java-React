@@ -3,10 +3,35 @@ import Head from 'next/head';
 import { motion } from 'framer-motion';
 import PostsContainer from '@/components/public/PostsContainer';
 import { postsFetch, postsUrl } from '@/services/postsFetch';
+import styled from 'styled-components';
+
+
+const TitleContainer = styled.div`
+width: 90%;
+margin-top: 20px;
+margin-bottom: -20px;
+@media (min-width: 768px) {
+  width: 70%;
+}
+`
+
+const Title = styled.h3`
+font-style: normal;
+font-weight: 600;
+font-size: 16px;
+line-height: 28px;
+justify-self: start;
+align-self: start;
+
+@media (min-width: 768px) {
+      font-size: 20px;
+  }
+`
 
 export default function Home() {
 
   const [posts, setPosts] = useState(null)
+
 
   const getPosts = async () => {
     const res= await fetch(postsUrl).then(res=>res.json())
@@ -33,6 +58,11 @@ export default function Home() {
         style={{ width: '100%' }}
       >
       </motion.div>
+      <TitleContainer>
+        <Title>
+          Publicaciones populares
+        </Title>
+      </TitleContainer>
       <PostsContainer posts={posts}/>
     </>
   )
