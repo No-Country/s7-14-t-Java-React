@@ -13,7 +13,6 @@ const CategoryContainer = () => {
     const getPosts = async () => {
       const res= await fetch(`${postsUrl}category/${categoryId}`).then(res=>res.json()).catch(err => console.error(err))
       setPostsCategory(res)
-      console.log(postsCategory)
     }
   
     useEffect(()=>{
