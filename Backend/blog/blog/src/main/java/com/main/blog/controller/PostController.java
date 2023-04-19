@@ -61,8 +61,8 @@ public class PostController {
     }
 
     @GetMapping("/search")
-    public ResponseEntity<?> getByTitle(@RequestParam String search) {
-        return iPostService.getByTitle(search);
+    public ResponseEntity<?> getBySearch(@RequestParam String search) {
+        return iPostService.getByTitle(search, search);
     }
 
     @PostMapping("/like/{id}")

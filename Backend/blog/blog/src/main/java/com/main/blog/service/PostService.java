@@ -31,7 +31,7 @@ public class PostService implements IPostService {
 
     @Autowired
     private IUserRepository iUserRepository;
-    
+
     @Autowired
     private Mapper mapper;
 
@@ -141,8 +141,8 @@ public class PostService implements IPostService {
     }
 
     @Override
-    public ResponseEntity<?> getByTitle(String title) {
-        List<Post> posts = iPostRepository.findAllByTitleContaining(title);
+    public ResponseEntity<?> getByTitle(String title, String text) {
+        List<Post> posts = iPostRepository.findAllByTitleContainingOrTextContaining(title, text);
         return ResponseEntity.status(HttpStatus.ACCEPTED).body(posts.stream().map(post -> mapper.getMapper().map(post, ResponsePostDto.class)));
     }
 
