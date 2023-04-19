@@ -71,7 +71,7 @@ const LikeCommentCount = styled.span`
     color: #5673BF;
 `
 
-const PostDetail = ({title, category, text }) => {
+const PostDetail = ({title, category, text, likes}) => {
   return (
     <Card>
         <TitleContainer>
@@ -92,7 +92,7 @@ const PostDetail = ({title, category, text }) => {
         <LikeCommentContainer>
             <Image src="/../public/icons/like-icon.png" width={16.76} height={15.57} alt='like-icon'/>
             <LikeCommentCount>
-                1.2 mil
+                {likes ? likes : 0}
             </LikeCommentCount>
         </LikeCommentContainer>
         

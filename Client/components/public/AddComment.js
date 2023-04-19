@@ -34,7 +34,7 @@ const PostSendIcon = styled(SendIcon)`
     opacity: 0.5;
 `
 
-const AddComment = ({postId}) => {
+const AddComment = ({postId, userAvatar}) => {
 
     const {token} = useContext(GlobalContext)
 
@@ -74,7 +74,7 @@ const AddComment = ({postId}) => {
 
     return (
     <AddCommentContainer>
-        <Image src="/../public/images/profile-image.png" width={40} height={40} alt='profile-pic'/>
+        <Image src={userAvatar} width={40} height={40} alt='profile-pic'/>
         <AddCommentInput placeholder='Anadir un comentario...' onChange={handleComment}/>
         <PostSendIcon onClick={handleSubmit}/>
     </AddCommentContainer> 

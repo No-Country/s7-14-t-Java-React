@@ -1,10 +1,11 @@
-import React from 'react'
+import React, {useContext} from 'react'
 import styled from 'styled-components'
 import Image from 'next/image'
 import Comment from './Comment'
 import AddComment from './AddComment'
 import { useComments } from '@/hooks/useComments'
 import { postsFetch } from '@/services/postsFetch'
+import { GlobalContext } from '@/context/GlobalContext'
 
 
 const Card = styled.article`
@@ -43,7 +44,8 @@ const PostComments = ({postId}) => {
 
     const { comment, isLoading, isError } = useComments(postId, postsFetch)
 
-    console.log(comment)
+    const {user} = useContext(GlobalContext)
+
   return (
     <Card>
         <LikeCommentContainer>
@@ -52,8 +54,14 @@ const PostComments = ({postId}) => {
                 {comment ? comment.length : 0}
             </LikeCommentCount>
         </LikeCommentContainer>
-        <Separator />
-        <AddComment postId={postId}/>
+        {user.avatar && (
+            <>
+                <Separator />
+                <AddComment postId={postId} userAvatar={user.avatar}/>
+            </>
+        )}
+
+        
         {comment && comment.map((e) => {
             return <Comment commentData={e} key={e.id}/>
         })}        

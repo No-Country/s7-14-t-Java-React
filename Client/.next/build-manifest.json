@@ -30,10 +30,20 @@
       "static/chunks/main.js",
       "static/chunks/pages/_error.js"
     ],
-    "/publicacion/[postId]": [
+    "/explorar": [
       "static/chunks/webpack.js",
       "static/chunks/main.js",
-      "static/chunks/pages/publicacion/[postId].js"
+      "static/chunks/pages/explorar.js"
+    ],
+    "/perfil": [
+      "static/chunks/webpack.js",
+      "static/chunks/main.js",
+      "static/chunks/pages/perfil.js"
+    ],
+    "/publicar": [
+      "static/chunks/webpack.js",
+      "static/chunks/main.js",
+      "static/chunks/pages/publicar.js"
     ]
   },
   "ampFirstPages": []

@@ -2,6 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import Image from 'next/image'
 import dateToNow from '@/utils/dateToNow'
+import capitalizarPrimeraLetra from '@/utils/capitalizarPrimeraLeta'
 
 
 const Separator = styled.div`
@@ -50,10 +51,10 @@ const Comment = ({commentData}) => {
     <Separator />
     <CommentContainer>
         <ProfileCommentContainer>
-            <Image src="/../public/images/profile-image.png" width={40} height={40} alt="profile-pic"/>
+            <Image src={commentData.user.avatar} width={40} height={40} alt="profile-pic"/>
             <ProfileTitleCommentContainer>                    
                 <ProfileName>
-                    Mate Amargo
+                    {capitalizarPrimeraLetra(commentData.user.name)} {capitalizarPrimeraLetra(commentData.user.lastName)}
                 </ProfileName>
                 <CommentDate>
                     {dateToNow(commentData.date)}
