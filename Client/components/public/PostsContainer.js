@@ -3,14 +3,14 @@ import styled from 'styled-components'
 import PostCard from './PostCard'
 
 const Container = styled.section`
-  margin-top: 200px;
+  margin-top: 20px;
   display: flex;
   flex-direction: column;
   width: 100%;
   display: flex;
-  justify-content: center;
   align-items: center;
   gap: 16px;
+  min-height: 100vh;
 `
 
 const posts = {
@@ -26,8 +26,6 @@ const posts = {
 
 const PostsContainer = ({posts}) => { 
 
-
-  
   return (
     <Container>
       {posts && posts.map((e) => {

@@ -26,13 +26,13 @@ const Hashtags = styled.div`
     line-height: 16px;
 `
 
-const PostHashtags = ({postHashtagsInfo}) => {
+const PostHashtags = ({hashtagData}) => {
 
   return (
     <Container>
-        {postHashtagsInfo && postHashtagsInfo.map((e, i)=>{
+        {hashtagData && hashtagData.map((e, i)=>{
             return (
-                <Hashtags key={`${i}-${e.name}`}>
+                <Hashtags key={`${i}-${e}`}>
                     #{e.name}
                 </Hashtags>
             )
