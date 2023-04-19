@@ -23,4 +23,7 @@ public class ResponsePostDto {
     private ResponseCategoryDto category;
 
     private ResponseUserDto user;
+
+    private Long countLikes;
+
 }

@@ -11,4 +11,6 @@ import java.util.Set;
 public interface ICommentRepository extends JpaRepository<Comment, Integer> {
 
     Set<Comment> findByPost_Id(Long postId);
+
+    Set<Comment> findByUser_Id(Long userId);
 }

@@ -1,6 +1,6 @@
-import styled from 'styled-components'
-import { motion } from 'framer-motion'
-import SearchIcon from '@/public/icons/Search'
+import styled from 'styled-components';
+import { motion } from 'framer-motion';
+import SearchIcon from '@/public/icons/Search';
 
 export const SearchNav = () => {
   return (
@@ -9,7 +9,7 @@ export const SearchNav = () => {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.5, delay: 0.5 }}
-        placeholder="Buscar..."
+        placeholder="     Buscar en PubliShare"
       />
       <motion.div
         initial={{ opacity: 0 }}
@@ -24,31 +24,30 @@ export const SearchNav = () => {
 }
 
 const ContainerInput = styled.div`
-  width: 57rem;
+  width: 40rem;
   display: flex;
   align-items: center;
   position: relative;
   .icon-container {
-    background: var(--primaryGreen1);
     cursor: pointer;
     position: absolute;
-    right: 0.5rem;
-    border-radius: 10px;
-    height: 4.4rem;
+    left: -0.5rem;
+    border-radius: 6px;
+    height: 2rem;
     width: 50px;
     display: flex;
-    align-items: center;
+    align-items: left;
     justify-content: center;
   }
 `
 const Input = styled(motion.input)`
-  height: 4.2rem;
+  height: 1rem;
   width: 100%;
   background-color: #fff;
   box-shadow: none;
   border: none;
   color: var(--secondaryViolet1);
-  padding: 2.5rem 1.5rem;
+  padding: 1rem 1rem;
   border-radius: 10px;
   font-family: Raleway;
   font-size: 16px;

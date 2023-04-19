@@ -2,7 +2,6 @@ package com.main.blog.service.interfaces;
 
 import com.main.blog.dto.PatchPostDto;
 import com.main.blog.dto.RequestPostDto;
-import com.main.blog.dto.UserIdDto;
 import org.springframework.http.ResponseEntity;
 
 
@@ -22,4 +21,6 @@ public interface IPostService {
     ResponseEntity<?> likePost(Long id, String token);
 
     ResponseEntity<?> getUserPosts(Long userId);
+
+    ResponseEntity<?> getByTitle(String title, String text);
 }

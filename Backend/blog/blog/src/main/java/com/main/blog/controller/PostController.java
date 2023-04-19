@@ -2,7 +2,6 @@ package com.main.blog.controller;
 
 import com.main.blog.dto.PatchPostDto;
 import com.main.blog.dto.RequestPostDto;
-import com.main.blog.dto.UserIdDto;
 import com.main.blog.service.interfaces.IPostService;
 
 import com.main.blog.util.Mapper;
@@ -23,17 +22,19 @@ public class PostController {
     @Autowired
     private IPostService iPostService;
 
-    @Transactional(readOnly=true)
+    @Transactional(readOnly = true)
     @GetMapping("user/{userId}")
     public ResponseEntity<?> getUserPosts(@PathVariable Long userId) {
         return iPostService.getUserPosts(userId);
     }
-    @Transactional(readOnly=true)
+
+    @Transactional(readOnly = true)
     @GetMapping("/{id}")
     public ResponseEntity<?> getPost(@PathVariable Long id) {
         return iPostService.getPostById(id);
     }
-    @Transactional(readOnly=true)
+
+    @Transactional(readOnly = true)
     @GetMapping("/")
     public ResponseEntity<?> getAllPosts() {
         return iPostService.getAllPosts();
@@ -59,6 +60,11 @@ public class PostController {
         return iPostService.getPostByCategory(categoryId);
     }
 
+    @GetMapping("/search")
+    public ResponseEntity<?> getBySearch(@RequestParam String search) {
+        return iPostService.getByTitle(search, search);
+    }
+
     @PostMapping("/like/{id}")
     public ResponseEntity<?> likePost(@PathVariable Long id, @RequestHeader("Authorization") String token) {
         return iPostService.likePost(id, token);
@@ -68,4 +74,6 @@ public class PostController {
     public ResponseEntity<?> unlikePost(@PathVariable Long id, @RequestHeader("Authorization") String token) {
         return iPostService.likePost(id, token);
     }
+
+
 }
