@@ -134,7 +134,7 @@ const PostCard = ({posts}) => {
                    {dateToNow(posts.date)}
                 </PostDate>
             </ProfileTitleContainer>
-            <LikeIcon src="/../public/icons/favorite-icon.png" width={18} height={16} alt='favorite-icon'/>
+            <LikeIcon src="https://i.ibb.co/YTZf7Bb/favorite-icon.webp" width={18} height={16} alt='favorite-icon'/>
         </Header>
         <Content>
             <Title>
@@ -151,14 +151,14 @@ const PostCard = ({posts}) => {
         </Content>        
         <Footer>
             <LikeCommentContainer>
-                <Image src="/../public/icons/like-icon.png" width={16.76} height={15.57} alt='like-icon'/>
+                <Image src="https://i.ibb.co/c8PC3s7/like-icon.webp" width={16.76} height={15.57} alt='like-icon'/>
                 <LikeCommentCount>
                     {posts.countLikes ? posts.countLikes : 0}
                     {/* {posts.likes} */}
                 </LikeCommentCount>
             </LikeCommentContainer>
             <LikeCommentContainer>
-                <Image src="/../public/icons/comment-icon.png" width={18} height={18} alt='comment-icon'/>
+                <Image src="https://i.ibb.co/Gtm8ZDf/comment-icon.webp" width={18} height={18} alt='comment-icon'/>
                 <LikeCommentCount>
                     {comment ? comment.length : 0}
                     {/* {posts.comments} */}

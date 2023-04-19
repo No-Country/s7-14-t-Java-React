@@ -5,7 +5,7 @@ const nextConfig = {
     styledComponents: true,
   },
   images: {
-    domains: ['unavatar.io'],
+    domains: ['unavatar.io', 'i.ibb.co'],
   },
 }
 

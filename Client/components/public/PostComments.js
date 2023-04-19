@@ -49,7 +49,7 @@ const PostComments = ({postId}) => {
   return (
     <Card>
         <LikeCommentContainer>
-            <Image src="/../public/icons/comment-icon.png" width={18} height={18} alt='comment-icon'/>
+            <Image src="https://i.ibb.co/Gtm8ZDf/comment-icon.webp" width={18} height={18} alt='comment-icon'/>
             <LikeCommentCount>
                 {comment ? comment.length : 0}
             </LikeCommentCount>
