@@ -81,12 +81,12 @@ export const LoginModal = () => {
         src={Logo}
         alt="logo"
         className="logo-icon"
-        height={100}
-        width={300}
+        height={60}
+        width={60}
       />
-      <div className="image">
+      {/*<div className="image">
         <Image src={ImageLogin} alt="login-image" />
-      </div>
+  </div>*/}
 
       {visible ? (
         <div className="form">
@@ -94,7 +94,6 @@ export const LoginModal = () => {
         </div>
       ) : (
         <div className="form">
-          <h2>Bienvenido</h2>
           <p>Iniciar sesión con su cuenta</p>
           <form onSubmit={handleSubmit(onSubmit)}>
             <Input
@@ -104,7 +103,7 @@ export const LoginModal = () => {
               label="Ingresar correo"
               errors={errors?.email?.message}
               margin="24px 0 31px"
-            />
+              />
             <Input
               register={register('password')}
               registerInput="password"
@@ -144,27 +143,25 @@ export const LoginModal = () => {
 const Container = styled.div`
   display: flex;
   flex-direction: row;
-  border-radius: 16px;
+  border-radius: 10px;
   position: relative;
-  min-width: 824px;
+  min-width: 400px;
   background: #d1d1d1;
-  .image {
-    background-color: var(--secondaryViolet1);
-    border-radius: 16px 0px 0px 16px;
-  }
+  
   .logo-icon {
-    position: absolute;
-    left: 40px;
-    top: 42%;
+    position: relative;
+    right: -160px;
+    top: 1rem;
   }
 
   .form {
+    
     display: flex;
     flex-direction: column;
     display: flex;
     flex-direction: column;
     padding: 82px 0;
-    margin: 0 auto;
+    margin: 7px 0;
     form {
       display: flex;
       flex-direction: column;
