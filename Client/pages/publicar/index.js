@@ -1,6 +1,7 @@
+const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
 import React, { useState, useEffect, useContext } from 'react'
 import dynamic from 'next/dynamic'
-const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
+
 import 'node_modules/react-quill/dist/quill.snow.css'
 import styled from 'styled-components'
 import HashtagIcon from '@/public/icons/HashtagIcon';

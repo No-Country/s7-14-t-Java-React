@@ -7,6 +7,13 @@ import '@/styles/globals.css';
 import GlobalContextProvider from '@/context/GlobalContext'
 //Components
 import Layout from '@/components/common/Layout'
+//Font
+import { Roboto } from 'next/font/google'
+
+const roboto = Roboto({
+  weight: '400',
+  subsets: ['latin'],
+})
 
 export default function App({ Component, pageProps }) {
   const queryClient = new QueryClient()
@@ -15,9 +22,11 @@ export default function App({ Component, pageProps }) {
     <GlobalContextProvider>
       <QueryClientProvider client={queryClient}>
         <GlobalStyles />
-        <Layout>
-          <Component {...pageProps} />
-        </Layout>
+          <main className={roboto.className}>
+            <Layout >
+              <Component {...pageProps} />
+            </Layout>
+          </main>
       </QueryClientProvider>
     </GlobalContextProvider>
   )
