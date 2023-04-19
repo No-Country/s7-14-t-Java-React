@@ -22,4 +22,5 @@ public interface IPostService {
 
     ResponseEntity<?> getUserPosts(Long userId);
 
+    ResponseEntity<?> getByTitle(String title);
 }

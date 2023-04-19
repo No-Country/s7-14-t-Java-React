@@ -9,7 +9,6 @@ import com.main.blog.util.Mapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
@@ -32,8 +31,7 @@ public class PostService implements IPostService {
 
     @Autowired
     private IUserRepository iUserRepository;
-
-
+    
     @Autowired
     private Mapper mapper;
 
@@ -140,6 +138,12 @@ public class PostService implements IPostService {
         } catch (ResourceNotFoundException e) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
         }
+    }
+
+    @Override
+    public ResponseEntity<?> getByTitle(String title) {
+        List<Post> posts = iPostRepository.findAllByTitleContaining(title);
+        return ResponseEntity.status(HttpStatus.ACCEPTED).body(posts.stream().map(post -> mapper.getMapper().map(post, ResponsePostDto.class)));
     }
 
 //    @Override
