@@ -1,6 +1,6 @@
-import styled from 'styled-components'
-import { motion } from 'framer-motion'
-import SearchIcon from '@/public/icons/Search'
+import styled from 'styled-components';
+import { motion } from 'framer-motion';
+import SearchIcon from '@/public/icons/Search';
 
 export const SearchNav = () => {
   return (
