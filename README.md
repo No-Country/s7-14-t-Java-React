@@ -11,6 +11,10 @@
 <br>
 <br>
 
+<div align="center">
+  <p>Publishare es un blog para la gente que le interese compartir cosas simples, hobbies y gustos. Se basa en la simpleza de su contenido para poder consumirlo sin abrumarse de informacion. Recetas, Bandas musicales, Cine, Deportes. Todo tipo de contenido para que los usuarios puedan compartir sin fin!</p>
+</div>
+
 ## ⚒️ Tecnologías
 
 ### UI & UX
