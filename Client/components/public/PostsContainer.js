@@ -25,10 +25,10 @@ const posts = {
 }
 
 const PostsContainer = ({posts}) => { 
-
+  const arr = posts && [...posts]
   return (
     <Container>
-      {posts && posts.map((e) => {
+      {posts && arr.reverse().map((e) => {
           return <PostCard posts={e} key={e.id}/>
         })}
     </Container>
