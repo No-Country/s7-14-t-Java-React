@@ -7,26 +7,38 @@ import { GlobalContext } from '@/context/GlobalContext'
 import { useContext } from 'react'
 
 export const MenuNav = () => {
-  const { contextDataGlobal, setContextDataGlobal } = useContext(GlobalContext)
+  const { contextDataGlobal, setContextDataGlobal, user, setUser, setToken } = useContext(GlobalContext)
+
+  const handleClick = () => {
+    setUser('')
+    setToken('')
+  }
   return (
     <Container
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.5, delay: 1 }}
     >
-      <Item
-        onClick={() =>
-          setContextDataGlobal({
-            ...contextDataGlobal,
-            showModal: true,
-            modalActive: 'login',
-          })
-        }
-      >
+      {user.id ? (<Item onClick={handleClick}>
         <span className="bar" />
         <AccountIcon />
-        <p>Mi cuenta</p>
-      </Item>
+        <p>Cerrar sesión</p>
+        </Item>) : (
+              <Item
+              onClick={() =>
+                setContextDataGlobal({
+                  ...contextDataGlobal,
+                  showModal: true,
+                  modalActive: 'login',
+                })
+              }
+            >
+              <span className="bar" />
+              <AccountIcon width={25} heigth={25}/>
+              <p>Ingresar</p>
+            </Item>
+      )}
+
       </Container>
   )
 }
@@ -36,21 +48,15 @@ const Container = styled(motion.div)`
   display: flex;
   align-items: center;
   gap: 0.9rem;
-  .number-cart {
-    cursor: pointer;
-    background-color: var(--primaryGreen1);
-    color: var(--secondaryViolet1);
-    padding: 12px;
-    border-radius: 6px;
-    margin-left: 1rem;
-  }
 `
 
 const Item = styled.div`
   display: flex;
   align-items: center;
+  justify-content: center;
   cursor: pointer;
   transition: all ease-in-out 0.3s;
+  margin-right: 8px;
 
   path {
     transition: all 0.3s ease-in-out;
@@ -59,15 +65,15 @@ const Item = styled.div`
     width: 1px;
     height: 5rem;
     background-color: #989898;
-    margin-right: 1rem;
+    margin-right: 8px;
   }
   &:hover {
-    color: var(--primaryGreen1);
+    color: #FF969A;
     .bar {
-      background-color: var(--primaryGreen1);
+      background-color: #FF969A;
     }
     path {
-      fill: var(--primaryGreen1);
+      fill: #FF969A;
     }
   }
 `

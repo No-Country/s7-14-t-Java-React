@@ -88,10 +88,12 @@ export const RegisterContent = () => {
   }
   return (
     <Container>
-      <h2>Registro</h2>
-      <p>
-        Completa los siguientes <br /> campos para registrarte
-      </p>
+      <div style={{width: '80%', display: 'flex', flexDirection: 'column', alignItems:'center', justifyContent:'center'}}>
+        <h2>Registro</h2>
+        <p style={{textAlign: 'center'}}>
+          Completa los siguientes campos para registrarte
+        </p>
+      </div>
       <form onSubmit={handleSubmit(onSubmit)}>
         <Input
           register={register('email')}
@@ -140,7 +142,7 @@ export const RegisterContent = () => {
           type="submit"
           text="REGISTRARSE"
           width="200px"
-          colorFocus="#25da2d"
+          colorFocus="#5673BF"
           margin="7px 0 0"
         />
       </form>
@@ -148,4 +150,8 @@ export const RegisterContent = () => {
   )
 }
 
-const Container = styled.div``
+const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`

@@ -8,9 +8,12 @@ import Image from 'next/image'
 import { MenuNav } from '../MenuNav'
 import { SearchNav } from '../SearchNav'
 import Logo from '@/public/images/Logo-2.png'
+import { GlobalContext } from '@/context/GlobalContext'
+import { useContext } from 'react'
 
 export const Submenu = () => {
   const [open, cycleOpen] = useCycle(false, true)
+  const {user} = useContext(GlobalContext)
   return (
     <Container
       initial={{ opacity: 1, height: '0' }}
@@ -22,32 +25,33 @@ export const Submenu = () => {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }} 
         transition={{ duration: 0.5, delay: 1.5 }} 
-        className="categories"
-        onClick={cycleOpen}
+        className="categories"        
       >
       <Link href="/">
-	<Image src={Logo} alt="logo" height="50" width="50" className='img'/>
+	      <Image src={Logo} alt="logo" height="50" width="50" className='img'/>
       </Link>
-        <MenuButton  isOpen={open} className="but" />
-        <p>PubliShare</p>
+        <MenuButton  isOpen={open} className="but" onClick={cycleOpen}/>
+        <p className='companyName'>PubliShare</p>
     </motion.div>
          
     <SearchNav />
     <div className='linkes'>
       <Link href="/">
-	Home
+	      Home
       </Link>
       <Link href="/explorar">
-	Explorar
+	      Explorar
       </Link>
-      <Link href="/publicar">
-	Publicar
-      </Link>
-      <Link href="/perfil">
-	Perfil
-      </Link>
-      <Link href="/ingresar">
-      </Link>
+      {user.id && (
+        <>
+            <Link href="/publicar">
+              Publicar
+            </Link>
+            <Link href="/perfil">
+              Perfil
+            </Link>
+        </>
+      )}
 
     </div>
     <MenuNav />
@@ -79,18 +83,24 @@ const Container = styled(motion.div)`
       color: #FFFFFF;
     }
   }
+  .companyName{
+
+  }
   
   @media (max-width: 600px){
     .img{
       display: none;
     } 
+    .companyName {
+      display: none;
+    }
   }
 
   @media (min-width: 600px) {
-  .but{
-    display: none;
-    position: relative;
-    left: 40px;
+    .but{
+      display: none;
+      position: relative;
+      left: 40px;
     }
   }
     .linkes{
