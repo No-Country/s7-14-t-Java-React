@@ -45,7 +45,6 @@ const CommentParagraph = styled.p`
 
 const Comment = ({commentData}) => {
 
-    console.log(commentData)
   return (
     <>
     <Separator />
