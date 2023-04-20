@@ -2,17 +2,10 @@ import { AnimatePresence, motion } from 'framer-motion'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import styled from 'styled-components'
+import { use, useContext } from 'react'
+import { GlobalContext } from '@/context/GlobalContext'
 
-const links = [
-  { name: 'Inicio', to: '/', id: 1 },
-  { name: 'Explorar', to: '#', id: 2 },
-]
-const categories = [
-  { name: 'Publicar', to: '/publicar', id: 3 },
-  { name: 'Perfil', to: '/perfil', id: 4 },
-  { name: 'Ayuda', to: '/ayuda', id: 5 },
-  { name: 'Cerrar sesión', to: '/peripherals', id: 6 },
-]
+
 
 const itemVariants = {
   closed: {
@@ -38,6 +31,18 @@ const sideVariants = {
 
 export const HiddenMenu = ({ open, action }) => {
   const router = useRouter()
+
+  const {user} = useContext(GlobalContext)
+
+  const links = user.id ? [
+    { name: 'Inicio', to: '/', id: 1 },
+  { name: 'Explorar', to: '/explorar', id: 2 },
+    { name: 'Publicar', to: '/publicar', id: 3 },
+    { name: 'Perfil', to: '/perfil', id: 4 },
+    // { name: 'Ayuda', to: '/ayuda', id: 5 },
+    // { name: 'Cerrar sesión', to: '/peripherals', id: 6 },
+  ] : [    { name: 'Inicio', to: '/', id: 1 },
+  { name: 'Explorar', to: '#', id: 2 },]
 
   return (
     <AnimatePresence>
@@ -74,19 +79,6 @@ export const HiddenMenu = ({ open, action }) => {
               </Link>
             ))}
             <motion.span variants={itemVariants} />
-            {categories.map(({ name, to, id }) => (
-              <Link passHref key={id} href={to} style={null}>
-                <Text
-                  selected={router.pathname === to}
-                  whileHover={{ color: '#fff' }}
-                  variants={itemVariants}
-                  onClick={action}
-                >
-                  {name}
-                  <div className="bar" />
-                </Text>
-              </Link>
-            ))}
           </ContainerItems>
         </Menu>
       )}
@@ -123,7 +115,7 @@ const ContainerItems = styled(motion.div)`
 const Text = styled(motion.p)`
   display: flex;
   align-items: center;
-  color: ${(props) => (props?.selected ? '#fff' : '')};
+  color: ${(props) => (props?.selected ? '#FF969A' : '#fff')};
   font-size: 16px;
   .bar {
     display: ${(props) => (props?.selected ? 'inherit' : 'none')};
