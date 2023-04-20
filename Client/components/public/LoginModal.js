@@ -81,12 +81,12 @@ export const LoginModal = () => {
         src={Logo}
         alt="logo"
         className="logo-icon"
-        height={100}
-        width={300}
+        height={60}
+        width={60}
       />
-      <div className="image">
+      {/*<div className="image">
         <Image src={ImageLogin} alt="login-image" />
-      </div>
+  </div>*/}
 
       {visible ? (
         <div className="form">
@@ -94,8 +94,7 @@ export const LoginModal = () => {
         </div>
       ) : (
         <div className="form">
-          <h2>Bienvenido</h2>
-          <p>Iniciar sesión con su cuenta</p>
+          <p>Iniciar sesión en PubliShare</p>
           <form onSubmit={handleSubmit(onSubmit)}>
             <Input
               register={register('email')}
@@ -104,7 +103,7 @@ export const LoginModal = () => {
               label="Ingresar correo"
               errors={errors?.email?.message}
               margin="24px 0 31px"
-            />
+              />
             <Input
               register={register('password')}
               registerInput="password"
@@ -122,7 +121,7 @@ export const LoginModal = () => {
               type="submit"
               text="LOGIN"
               width="200px"
-              colorFocus="#25da2d"
+              colorFocus="#5673BF"
               margin="0 0 24px"
             />
           </form>
@@ -131,7 +130,7 @@ export const LoginModal = () => {
               type="submit"
               text="Login con Facebook"
               width="200px"
-              colorFocus="#3B5998"
+              colorFocus="#5673BF"
               secondary="true"
             />
           </div>
@@ -144,41 +143,39 @@ export const LoginModal = () => {
 const Container = styled.div`
   display: flex;
   flex-direction: row;
-  border-radius: 16px;
+  border-radius: 10px;
   position: relative;
-  min-width: 824px;
+  min-width: 350px;
   background: #d1d1d1;
-  .image {
-    background-color: var(--secondaryViolet1);
-    border-radius: 16px 0px 0px 16px;
-  }
+  
   .logo-icon {
-    position: absolute;
-    left: 40px;
-    top: 42%;
+    position: relative;
+    right: -140px;
+    top: 1rem;
   }
 
   .form {
+    
     display: flex;
     flex-direction: column;
     display: flex;
     flex-direction: column;
     padding: 82px 0;
-    margin: 0 auto;
+    margin: 10px -15px;
     form {
       display: flex;
       flex-direction: column;
       align-items: center;
     }
     h2 {
-      font-family: 'Raleway';
+      font-family: 'Roboto';
       font-style: normal;
       font-weight: 400;
       font-size: 20px;
       line-height: 26px;
     }
     p {
-      font-family: 'Raleway';
+      font-family: 'Roboto';
       font-style: normal;
       font-weight: 700;
       font-size: 20px;
@@ -192,7 +189,7 @@ const Container = styled.div`
       width: 100%;
       p {
         cursor: pointer;
-        font-family: 'Raleway';
+        font-family: 'Roboto';
         font-style: normal;
         font-weight: 400;
         font-size: 14px;
