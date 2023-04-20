@@ -45,10 +45,72 @@ const FollowButton = styled.button`
     color: #5673BF;
     background-color: #FFFFFF;
     align-self: center;
+    cursor: pointer;
+`
+const FollowedButton = styled.button`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    justify-self: end;
+    width: 62px;
+    height: 24px;
+    border: 0.5px solid #5673BF;
+    border-radius: 5px;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 24px;
+    color: #FFFFFF;
+    align-self: center;
+    cursor: pointer;
+    background-color: #5673BF;
 `
 
+const ProfileCard = ({profileImg, name, lastName, date, token, postUserId, followers, activeUserId, getPosts, postId}) => {
 
-const ProfileCard = ({profileImg, name, lastName, date}) => {
+    const followUser = async (id) => {
+    
+        const url = `https://sleek-pen-production-f98d.up.railway.app/followers/${id}`
+        const postToken = `Bearer ${token}`
+      
+        try {
+          const res = await fetch(url, {
+            method:'POST',
+            headers: {
+              'Content-Type': 'application/json',
+              'Authorization': postToken,
+            },
+          })
+          const result = await res.json()
+          getPosts(postId)
+          return result
+        } catch (error) {
+          console.log(error)
+        }
+    }
+
+    const unfollowUser = async (id) => {
+    
+        const url = `https://sleek-pen-production-f98d.up.railway.app/followers/${id}`
+        const postToken = `Bearer ${token}`
+      
+        try {
+          const res = await fetch(url, {
+            method:'DELETE',
+            headers: {
+              'Content-Type': 'application/json',
+              'Authorization': postToken,
+            },
+          })
+          const result = await res.json()
+          getPosts(postId)
+          return result
+        } catch (error) {
+          console.log(error)
+        }
+    }
+
+    
   return (
     <Card>
         <ProfileImage src={profileImg} width={40} height={40} alt='profile-pic'/>
@@ -60,9 +122,11 @@ const ProfileCard = ({profileImg, name, lastName, date}) => {
                 {dateToNow(date)}
             </PostDate>
         </ProfileTitleContainer>
-        <FollowButton src="/../public/icons/favorite-icon.png" width={18} height={16} alt="follow-button">
+        {postUserId !== activeUserId && ( followers.some((e) => e.followedUser.id === postUserId) ? <FollowedButton onClick={() => unfollowUser(postUserId)}>Seguido </FollowedButton> : <FollowButton onClick={() => followUser(postUserId)}>
             +Seguir
-        </FollowButton>
+        </FollowButton>)
+        }
+        
     </Card>
   )
 }

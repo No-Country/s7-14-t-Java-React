@@ -1,11 +1,10 @@
 import React, { useState, useEffect, useContext } from 'react'
-// import dynamic from 'next/dynamic'
-// const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
 import 'node_modules/react-quill/dist/quill.snow.css'
 import styled from 'styled-components'
 import HashtagIcon from '@/public/icons/HashtagIcon';
 import ImgIcon from '@/public/icons/ImgIcon';
 import { GlobalContext } from '@/context/GlobalContext';
+import { useRouter } from 'next/router';
 
 
 const ReactQuill =
@@ -169,6 +168,8 @@ const index = () => {
   const [hashtag, setHashtag] = useState('')
   const [image, setImage] = useState('')
 
+  const router = useRouter()
+
   const {token} = useContext(GlobalContext)
 
   const postPost = async (data) => {
@@ -200,6 +201,8 @@ const index = () => {
       })
       const result = await res.json()
       console.log(result)
+      router.push(`/publicacion/${result.id}`)
+      return result
     } catch (error) {
       console.log(error)
     }
@@ -216,7 +219,6 @@ const index = () => {
       }),
       'image': image,     
     }
-    console.log(form)
     postPost(form)
     
   }

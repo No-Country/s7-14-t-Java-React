@@ -1,8 +1,9 @@
-import React from 'react'
+import React, { useContext, useEffect } from 'react'
 import styled from 'styled-components'
 import Image from 'next/image'
 import dateToNow from '@/utils/dateToNow'
-import TrashIcon from '@/public/icons/TrashIcon'
+import { GlobalContext } from '@/context/GlobalContext'
+import capitalizarPrimeraLetra from '@/utils/capitalizarPrimeraLeta'
 
 const Container = styled.section`
   margin-top: 16px;
@@ -63,33 +64,61 @@ const CommentParagraph = styled.p`
     line-height: 24px;
 
 `
-const StyledTrashIcon = styled(TrashIcon)`
+const StyledTrashIcon = styled(Image)`
     align-self: flex-start;
     cursor: pointer;
 
 `
 
-const UserComments = ({comments}) => {
+
+
+
+const UserComments = ({comments, getUserComments}) => {
+
+    const { token, user } = useContext(GlobalContext)
+
+    const deleteComment = async (commentId) => {
+    
+        const url = `https://sleek-pen-production-f98d.up.railway.app/comments/${commentId}`
+        const postToken = `Bearer ${token}`
+      
+        try {
+          const res = await fetch(url, {
+            method:'DELETE',
+            headers: {
+              'Content-Type': 'application/json',
+              'Authorization': postToken,
+            },
+          })
+          const result = await res.json()
+          getUserComments(user.id)
+          return result
+        } catch (error) {
+          console.log(error)
+        }
+    }
+
+    
   return (
     <Container>
         {comments && comments.map((e) => {
-                <CommentContainer key={e.id}>
+                return (<CommentContainer key={e.id}>
                     <ProfileCommentContainer>
                         <Image src={e.user.avatar} width={40} height={40} alt="profile-pic"/>
                         <ProfileTitleCommentContainer>                    
                             <ProfileName>
-                                {e.user.name} {e.user.lastName}
+                                {capitalizarPrimeraLetra(e.user.name)} {capitalizarPrimeraLetra(e.user.lastName)}
                             </ProfileName>
                             <CommentDate>
                                 {dateToNow(e.date)}
                             </CommentDate>
                         </ProfileTitleCommentContainer>
-                        <StyledTrashIcon />
+                        <StyledTrashIcon src='https://i.ibb.co/j6bhK1k/alt.png' width={24} height={24} alt='trash-icon' onClick={() => deleteComment(e.id)}/>
                     </ProfileCommentContainer>
                     <CommentParagraph>
                         {e.content}
                     </CommentParagraph>
-                </CommentContainer>
+                </CommentContainer>)
         })}
 
     </Container>

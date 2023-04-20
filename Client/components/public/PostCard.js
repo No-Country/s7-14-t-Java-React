@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useContext} from 'react'
 import styled from 'styled-components'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -7,6 +7,7 @@ import capitalizarPrimeraLetra from '@/utils/capitalizarPrimeraLeta'
 import dateToNow from '@/utils/dateToNow'
 import { useComments } from '@/hooks/useComments'
 import { postsFetch } from '@/services/postsFetch'
+import { GlobalContext } from '@/context/GlobalContext'
 
 const Card = styled(Link)`
     margin-top: 20px;
@@ -110,6 +111,12 @@ const LikeCommentCount = styled.span`
 
 const PostCard = ({posts}) => {
 
+    const {user} = useContext(GlobalContext)
+
+    const iconUrl = user ? 
+    (posts.likes.some((e) => e.id === user.id) ? 'https://i.ibb.co/jrfJcfP/Icon-2.png' :
+     'https://i.ibb.co/c8PC3s7/like-icon.webp') : 'https://i.ibb.co/c8PC3s7/like-icon.webp';
+
     const countString = (str) => {
         if (str.length > 366)  {
             const extract = str.substring(0, 377)
@@ -151,9 +158,9 @@ const PostCard = ({posts}) => {
         </Content>        
         <Footer>
             <LikeCommentContainer>
-                <Image src="https://i.ibb.co/c8PC3s7/like-icon.webp" width={16.76} height={15.57} alt='like-icon'/>
+                <Image src={iconUrl} width={16.76} height={15.57} alt='like-icon'/>
                 <LikeCommentCount>
-                    {posts.countLikes ? posts.countLikes : 0}
+                    {posts.likes ? posts.likes.length : 0}
                     {/* {posts.likes} */}
                 </LikeCommentCount>
             </LikeCommentContainer>
