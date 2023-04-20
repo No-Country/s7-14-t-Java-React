@@ -12,7 +12,7 @@ import { GlobalContext } from '@/context/GlobalContext'
 const Card = styled(Link)`
     margin-top: 20px;
     width: 90%;
-    max-height: 400px;
+    max-height: 600px;
     border-radius: 8px;
     background: #FFFFFF;
     box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.25);
