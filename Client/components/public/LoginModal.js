@@ -128,7 +128,7 @@ export const LoginModal = () => {
           <div className="centered">
             <Button
               type="submit"
-              text="Login con Facebook"
+              text= "Continuar con Google"
               width="200px"
               colorFocus="#5673BF"
               secondary="true"
