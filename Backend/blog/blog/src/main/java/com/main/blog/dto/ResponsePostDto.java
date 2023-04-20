@@ -26,4 +26,6 @@ public class ResponsePostDto {
 
     private Long countLikes;
 
+    private List<ResponseUserDto> likes;
+
 }
