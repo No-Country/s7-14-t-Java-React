@@ -1,4 +1,4 @@
-import React, {useContext} from 'react'
+import React, {useContext, useEffect, useState} from 'react'
 import styled from 'styled-components'
 import Image from 'next/image'
 import Comment from './Comment'
@@ -42,14 +42,31 @@ const Separator = styled.div`
 
 const PostComments = ({postId}) => {
 
-    const { comment, isLoading, isError } = useComments(postId, postsFetch)
+    // const { comment, isLoading, isError } = useComments(postId, postsFetch)
+
+    const [comment, setComment] = useState(null)
 
     const {user} = useContext(GlobalContext)
+
+    const getComments = async () => {
+        try {
+            const res = await fetch(`https://sleek-pen-production-f98d.up.railway.app/comments/${postId}`)
+            const result = await res.json()
+            setComment(result)
+            return result
+        } catch (error) {
+            console.log(error)
+        }
+    }
+    useEffect(() => {
+        getComments()
+    }, [])
+    
 
   return (
     <Card>
         <LikeCommentContainer>
-            <Image src="/../public/icons/comment-icon.png" width={18} height={18} alt='comment-icon'/>
+            <Image src="https://i.ibb.co/Gtm8ZDf/comment-icon.webp" width={18} height={18} alt='comment-icon'/>
             <LikeCommentCount>
                 {comment ? comment.length : 0}
             </LikeCommentCount>
@@ -57,7 +74,7 @@ const PostComments = ({postId}) => {
         {user.avatar && (
             <>
                 <Separator />
-                <AddComment postId={postId} userAvatar={user.avatar}/>
+                <AddComment postId={postId} userAvatar={user.avatar} getComments={getComments}/>
             </>
         )}
 

@@ -1,10 +1,11 @@
-import React, {useState, useEffect} from 'react'
+import React, {useState, useEffect, useContext} from 'react'
 import styled from 'styled-components'
 import Image from 'next/image'
 import { Tags, TagsContainer } from '../common/Tags'
 import { useRouter } from 'next/router'
 import { postsFetch, postsUrl } from '@/services/postsFetch'
 import { usePosts } from '@/hooks/usePosts'
+import { GlobalContext } from '@/context/GlobalContext'
 
 const Card = styled.section`
     display: flex;
@@ -71,7 +72,22 @@ const LikeCommentCount = styled.span`
     color: #5673BF;
 `
 
-const PostDetail = ({title, category, text, likes}) => {
+
+
+const PostDetail = ({title, category, text, likes, id, likePost, activeUser}) => {
+
+    const iconUrl = activeUser ? (likes.some((e) => e.id === activeUser.id) ? 'https://i.ibb.co/jrfJcfP/Icon-2.png' : 'https://i.ibb.co/c8PC3s7/like-icon.webp') : 'https://i.ibb.co/c8PC3s7/like-icon.webp'; 
+
+    // const isLiked = (active) => {
+    //     if (active) {
+    //         if (likes){
+    //             return likes.some(e => e.id === active.id)
+    //         }
+    //         return
+    //     }
+    //     return
+    // }
+
   return (
     <Card>
         <TitleContainer>
@@ -90,9 +106,10 @@ const PostDetail = ({title, category, text, likes}) => {
         </PostText>
 
         <LikeCommentContainer>
-            <Image src="/../public/icons/like-icon.png" width={16.76} height={15.57} alt='like-icon'/>
+        {/* https://i.ibb.co/jrfJcfP/Icon-2.png */}
+            <Image src={iconUrl} width={16.76} height={15.57} alt='like-icon' onClick={() => likePost(id)}/>
             <LikeCommentCount>
-                {likes ? likes : 0}
+                {likes ? likes.length : 0}
             </LikeCommentCount>
         </LikeCommentContainer>
         

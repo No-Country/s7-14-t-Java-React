@@ -6,6 +6,7 @@ import PostsContainer from '@/components/public/PostsContainer'
 import { GlobalContext } from '@/context/GlobalContext'
 import { postsUrl } from '@/services/postsFetch'
 import UserComments from '@/components/public/UserComments'
+import capitalizarPrimeraLetra from '@/utils/capitalizarPrimeraLeta'
 
 const Container = styled.section`
     width: 100%;
@@ -76,10 +77,12 @@ const PerfilButton = styled.div`
 const PublicacionesButton = styled(PerfilButton)`
     color: ${props => !props.isActive ? "#000000" : "#5673BF" };
     opacity: ${props => !props.isActive ? "0.5" : "1"};
+    cursor: pointer;
 `
 const ComentariosButton = styled(PerfilButton)`
     color: ${props => !props.isActive ? "#000000" :  "#5673BF"};
     opacity: ${props => !props.isActive ? "0.5" :  "1"};
+    cursor: pointer;
 `
 const ActiveButton = styled.div`
     width: 100%;
@@ -88,9 +91,13 @@ const ActiveButton = styled.div`
     background: #5673BF;
     position: absolute;
     bottom: 0;
-    display: ${props => props.isActive ? 'block' : 'none'};
-    
+    display: ${props => props.isActive ? 'block' : 'none'};    
 `
+
+const ProfilePic = styled(Image)`
+ border-radius: 50%;
+`
+
 const index = () => {
     const [activePubs, setActivePubs] = useState(true)
     const [activeComments, setActiveComments] = useState(false)
@@ -206,9 +213,9 @@ const index = () => {
 
       const [userPosts, setUserPosts] = useState(null)
       const [userComments, setUserComments] = useState(null)
-      const [userFollowers, setUserFollowers] = useState(null)
+      const [userFollowers, setUserFollowers] = useState(0)
 
-      const { user } = useContext(GlobalContext)
+      const { user, token } = useContext(GlobalContext)
 
       const getUserPosts = async () => {
         if (user.id) {
@@ -216,9 +223,9 @@ const index = () => {
             setUserPosts(res)
         }
       }
-      const getUserComments = async () => {
-        if (user.id) {
-            const res= await fetch(`https://sleek-pen-production-f98d.up.railway.app/comments/user/${user.id}`)
+      const getUserComments = async (id) => {
+        if (id) {
+            const res= await fetch(`https://sleek-pen-production-f98d.up.railway.app/comments/user/${id}`)
             .then(res=>res.json())
             .catch(err => console.error(err))
             setUserComments(res)
@@ -226,8 +233,15 @@ const index = () => {
       }
 
       const getUserFollowers = async () => {
+        const postToken = `Bearer ${token}`
         if (user.id) {
-            const res= await fetch(`https://sleek-pen-production-f98d.up.railway.app/followers/${user.id}`)
+            const res= await fetch(`https://sleek-pen-production-f98d.up.railway.app/followers/${user.id}`, {
+              method:'GET',
+              headers: {
+                'Content-Type': 'application/json',
+                'Authorization': postToken,
+              },
+            })
             .then(res=>res.json())
             .catch(err => console.error(err))
             setUserFollowers(res)
@@ -236,30 +250,20 @@ const index = () => {
       useEffect(()=>{
         getUserPosts()
         getUserFollowers()
-        getUserComments()
+        getUserComments(user.id)
       }, [])
-
-      const handleFollowers = (data) => {
-        if(data) {
-            if (data === 1) {
-                return `${data} seguidor`
-            }else {
-                return `${data} seguidores`
-            }
-        }
-      }
 
   return (
     <Container>
         <PerfilContainer>
             <PerfilHeader>
-                <Image src={user.avatar} alt='profilepic'/>
+                <ProfilePic src={user.avatar} width={40} height={40} alt='profilepic'/>
                 <ProfileNameFollowers>
                     <ProfileName>
-                        {user.name} {user.lastName}
+                        {capitalizarPrimeraLetra(user.name)} {capitalizarPrimeraLetra(user.lastName)}
                     </ProfileName>
                     <ProfileFollowers>
-                        {handleFollowers(userFollowers)} 
+                        {userFollowers ? userFollowers.length : 0} seguidores
                     </ProfileFollowers>
                 </ProfileNameFollowers>
             </PerfilHeader>
@@ -275,7 +279,7 @@ const index = () => {
                 </ComentariosButton>
             </ProfileFooter>
         </PerfilContainer>
-        {activePubs ? <PostsContainer posts={userPosts} /> : <UserComments comments={userComments}/>}
+        {activePubs ? <PostsContainer posts={userPosts} /> : <UserComments comments={userComments} getUserComments={getUserComments}/>}
         
     </Container>
   )

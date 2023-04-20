@@ -114,6 +114,7 @@ public class PostService implements IPostService {
     @Override
     public ResponseEntity<?> getPostByCategory(Long categoryId) {
         List<Post> posts = iPostRepository.findByCategoryId(categoryId).stream().toList();
+
         List<ResponsePostDto> postsDto = posts.stream().map(post -> (mapper.getMapper().map(post, ResponsePostDto.class))).collect(Collectors.toList());
         return ResponseEntity.status(HttpStatus.ACCEPTED).body(postsDto);
     }
@@ -133,7 +134,7 @@ public class PostService implements IPostService {
                 post.getLikes().add(user);
             }
             ResponsePostDto responsePostDto = mapper.getMapper().map(iPostRepository.save(post), ResponsePostDto.class);
-            responsePostDto.setCountLikes((long) post.getLikes().size());
+//            responsePostDto.setCountLikes((long) post.getLikes().size());
             return ResponseEntity.status(HttpStatus.ACCEPTED).body(responsePostDto);
         } catch (ResourceNotFoundException e) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
@@ -145,11 +146,6 @@ public class PostService implements IPostService {
         List<Post> posts = iPostRepository.findAllByTitleContainingOrTextContaining(title, text);
         return ResponseEntity.status(HttpStatus.ACCEPTED).body(posts.stream().map(post -> mapper.getMapper().map(post, ResponsePostDto.class)));
     }
-
-//    @Override
-//    public ResponseEntity<?> getLikes(Long postId) {
-//        return ResponseEntity.status(HttpStatus.ACCEPTED).body(iLikeRepository.countByPost_Id(postId));
-//    }
 
 
     public List<Hashtag> checkHashtag(List<Hashtag> hashtags) {

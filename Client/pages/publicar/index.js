@@ -1,12 +1,14 @@
-const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
 import React, { useState, useEffect, useContext } from 'react'
-import dynamic from 'next/dynamic'
-
 import 'node_modules/react-quill/dist/quill.snow.css'
 import styled from 'styled-components'
 import HashtagIcon from '@/public/icons/HashtagIcon';
 import ImgIcon from '@/public/icons/ImgIcon';
 import { GlobalContext } from '@/context/GlobalContext';
+import { useRouter } from 'next/router';
+
+
+const ReactQuill =
+  typeof window === "object" ? require("react-quill") : () => false;
 
 
 
@@ -14,6 +16,7 @@ const Container = styled.section`
   width: 100%;
   display: flex;
   justify-content: center;
+  min-height: 100vh;
 `
 
 const StyledForm = styled.form`
@@ -114,7 +117,7 @@ const Quill = styled(ReactQuill)`
   box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.25);
   border-radius: 8px;
   background: #FFFFFF;
-  height: 312px;
+  height: 300px;
 `
 
 const PostButton = styled.button`
@@ -153,7 +156,9 @@ const toBase64 = file => new Promise((resolve, reject) => {
     return
   }
 });
-
+const QuillWrapper = styled.div`
+  height: auto;
+`
 
 const index = () => {
 
@@ -162,6 +167,8 @@ const index = () => {
   const [quillText, setQuillText] = useState('')
   const [hashtag, setHashtag] = useState('')
   const [image, setImage] = useState('')
+
+  const router = useRouter()
 
   const {token} = useContext(GlobalContext)
 
@@ -194,6 +201,8 @@ const index = () => {
       })
       const result = await res.json()
       console.log(result)
+      router.push(`/publicacion/${result.id}`)
+      return result
     } catch (error) {
       console.log(error)
     }
@@ -210,7 +219,6 @@ const index = () => {
       }),
       'image': image,     
     }
-    console.log(form)
     postPost(form)
     
   }
@@ -234,8 +242,9 @@ const index = () => {
           <option value="Música" >Música</option>
           <option value="Celebridades" >Celebridades</option>
         </CategoryInput>
-
-        <Quill theme="snow" value={quillText} onChange={(e) => setQuillText(e)} placeholder='Introduce tu texto aquí...'/>
+        <QuillWrapper>
+          <Quill theme="snow" value={quillText} onChange={(e) => setQuillText(e)} placeholder='Introduce tu texto aquí...' />
+        </QuillWrapper>
         <HashtagContainer>
           <HashtagInput name='hashtags' value={hashtag} onChange={(e) => setHashtag(e.target.value)} placeholder='Añade hashtags'/>
           <HashtagIcon2 />

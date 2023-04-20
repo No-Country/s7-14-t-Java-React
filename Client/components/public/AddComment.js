@@ -34,7 +34,7 @@ const PostSendIcon = styled(SendIcon)`
     opacity: 0.5;
 `
 
-const AddComment = ({postId, userAvatar}) => {
+const AddComment = ({postId, userAvatar, getComments}) => {
 
     const {token} = useContext(GlobalContext)
 
@@ -56,7 +56,8 @@ const AddComment = ({postId, userAvatar}) => {
               })
 
             const result = await res.json()
-            console.log(result)
+            getComments()
+            return result
         } catch (error) {
             console.error(error)
         }
@@ -68,6 +69,7 @@ const AddComment = ({postId, userAvatar}) => {
 
     const handleSubmit = () => {
         postComment()
+        setCommentText('')
     }
     
 
@@ -75,7 +77,7 @@ const AddComment = ({postId, userAvatar}) => {
     return (
     <AddCommentContainer>
         <Image src={userAvatar} width={40} height={40} alt='profile-pic'/>
-        <AddCommentInput placeholder='Anadir un comentario...' onChange={handleComment}/>
+        <AddCommentInput placeholder='Anadir un comentario...' value={commentText} onChange={handleComment}/>
         <PostSendIcon onClick={handleSubmit}/>
     </AddCommentContainer> 
   )
