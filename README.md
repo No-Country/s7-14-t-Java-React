@@ -5,7 +5,7 @@
 <br>
 
 <div align="center">
-  <img src="https://ibb.co/v46wn45" width='512px' alt="preview image" title="preview image" />
+  <img src="https://ibb.co/v46wn45](https://i.ibb.co/Qv3bwvB/Mockup.png" width='512px' alt="preview image" title="preview image" />
 </div>
 
 <br>
