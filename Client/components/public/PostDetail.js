@@ -94,7 +94,7 @@ const PostDetail = ({title, category, text, likes, id, likePost, activeUser}) =>
             <Title>
                 {title}
             </Title>
-            <LikeIcon src={"/../public/icons/favorite-icon.png"} width={18} height={16} alt='like-icon'/>
+            <LikeIcon src='https://i.ibb.co/YTZf7Bb/favorite-icon.webp' width={18} height={16} alt='like-icon'/>
         </TitleContainer>
         <TagsContainer>
             <Tags>

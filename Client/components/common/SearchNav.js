@@ -9,7 +9,7 @@ export const SearchNav = () => {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.5, delay: 0.5 }}
-        placeholder="Buscar en PubliShare"
+        placeholder="Buscar"
       />
       <motion.div
         initial={{ opacity: 0 }}
@@ -31,7 +31,8 @@ const ContainerInput = styled.div`
   .icon-container {
     cursor: pointer;
     position: absolute;
-    right: -1rem;
+    right: -6px;
+    top: 1px;
     border-radius: 6px;
     height: 2rem;
     width: 50px;
@@ -49,11 +50,11 @@ const Input = styled(motion.input)`
   color: var(--secondaryViolet1);
   padding: 1rem 1rem;
   border-radius: 10px;
-  font-family: Raleway;
+  font-family: 'Roboto';
   font-size: 16px;
   transition: all ease-in-out 0.3s;
   &:focus {
     outline: none;
-    box-shadow: 0 0 6px 1px #01f603;
+    box-shadow: 0 0 6px 1px #FF969A;
   }
 `

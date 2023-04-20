@@ -142,26 +142,30 @@ export const LoginModal = () => {
 
 const Container = styled.div`
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   border-radius: 10px;
-  position: relative;
-  min-width: 350px;
+  /* position: relative; */
+  width: 320px;
   background: #d1d1d1;
+  justify-content: center;
+  align-items: center;
+  max-height: 650px;
+  padding: 20px 0;
   
   .logo-icon {
-    position: relative;
+    /* position: relative;
     right: -140px;
-    top: 1rem;
+    top: 1rem; */
+    margin-bottom: 20px;
   }
 
   .form {
     
     display: flex;
     flex-direction: column;
-    display: flex;
-    flex-direction: column;
-    padding: 82px 0;
-    margin: 10px -15px;
+    align-items: center;
+    /* padding: 82px 0; */
+    /* margin: 10px -15px; */
     form {
       display: flex;
       flex-direction: column;
