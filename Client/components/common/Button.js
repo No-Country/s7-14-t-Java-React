@@ -1,6 +1,6 @@
-import Link from 'next/link'
-import styled from 'styled-components'
-import { motion } from 'framer-motion'
+import Link from 'next/link';
+import styled from 'styled-components';
+import { motion } from 'framer-motion';
 
 export const Button = ({
   text = '',
@@ -27,7 +27,7 @@ export const Button = ({
       ) : (
         <Btn
           whileHover={{
-            backgroundColor: '#cdc3de',
+            backgroundColor: '#8F96A9',
 
             transition: { duration: 0.3 },
           }}
@@ -67,8 +67,8 @@ const Btn = styled(motion.button)`
   color: #fff;
   padding: 0.8rem 1.6rem;
   background-color: ${(props) =>
-    props.secondary === 'green'
-      ? 'var(--primaryGreen1)'
+    props.secondary === '#FFFFFF'
+      ? '#FFFFFF'
       : (props.secondary === 'violet' && 'var(--tertiaryNavy1)') ||
         'var(--secondaryViolet1)'};
   border-radius: 3px;
